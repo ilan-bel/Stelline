@@ -1,0 +1,17 @@
+name: Suggest a feature
+description: An idea for a future version of Stelline.
+title: "[Idea] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+      description: What it would do and why it would help your play.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything that already comes close?
+      description: Another puzzle app that does this well, or a workaround you use today.

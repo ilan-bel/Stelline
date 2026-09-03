@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Support page and FAQ
+    url: https://ilan-bel.github.io/Stelline/support/
+    about: How to play, hints, difficulty levels, colour-blind mode, autosave.
+  - name: Privacy policy
+    url: https://ilan-bel.github.io/Stelline/privacy/
+    about: Stelline collects no data at all. Read the full policy.

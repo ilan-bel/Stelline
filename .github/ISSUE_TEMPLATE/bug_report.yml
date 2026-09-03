@@ -1,0 +1,50 @@
+name: Report a problem
+description: Something in Stelline does not work as expected.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time. A few details make problems much faster to fix. Please do not include personal information.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what you saw instead.
+      placeholder: I placed the last queen and the board did not show the completion screen.
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Mode
+      options:
+        - 1 queen
+        - 2 stars
+        - Not related to a board
+    validations:
+      required: true
+  - type: input
+    id: board
+    attributes:
+      label: Board size and difficulty
+      placeholder: 10×10 Hard
+  - type: input
+    id: device
+    attributes:
+      label: iPhone model and iOS version
+      placeholder: iPhone 12, iOS 26.6
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Stelline version
+      description: Shown at the bottom of Settings in the app.
+      placeholder: 1.0.0 (19)
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Screenshots help. Drag images into this box.
