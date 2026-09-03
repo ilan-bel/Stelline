@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stelline support — how to play, hints, settings and contact</title>
+  <meta name="description" content="Support for Stelline, the Star Battle-style logic puzzle game for iPhone: the rules of both modes, dots and X marks, hints and the Show me where ladder, difficulty tiers, colour-blind mode, autosave, requirements and how to report a problem.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%233b34a6' d='M16 3l3.23 8.55 9.13.43-7.13 5.72 2.41 8.82L16 21.5l-7.64 5.02 2.41-8.82-7.13-5.72 9.13-.43z'/%3E%3C/svg%3E">
+  <style>
+    /* Stelline site — one shared stylesheet, inlined in every page on purpose (no external requests, works from file://).
+       Keep this block identical in index.html, support.html and privacy.html. */
+    :root {
+      color-scheme: light dark;
+      --bg: #faf9f6;
+      --surface: #ffffff;
+      --text: #1d1c1a;
+      --muted: #5b5853;
+      --line: #e1ded7;
+      --accent: #3b34a6;
+      --accent-ink: #ffffff;
+      --tint: #eeecfb;
+      --star: #d9930f;
+      --radius: 14px;
+      --maxw: 44rem;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121317;
+        --surface: #1b1c22;
+        --text: #ecebe6;
+        --muted: #b3b0a8;
+        --line: #2e3039;
+        --accent: #aaa3ff;
+        --accent-ink: #14122e;
+        --tint: #24233a;
+        --star: #f2b84d;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-padding-top: 1rem; }
+    body {
+      margin: 0;
+      font: 1rem/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-underline-offset: 0.15em; }
+    a:hover { text-decoration-thickness: 2px; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    .skip { position: absolute; left: -999px; top: 0; background: var(--surface); color: var(--text); padding: 0.5rem 1rem; z-index: 10; }
+    .skip:focus { left: 1rem; top: 1rem; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
+    .top {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 0.75rem 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--line);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.15rem; color: inherit; text-decoration: none; }
+    .brand svg { flex: none; }
+    .top nav { display: flex; gap: 1.25rem; font-weight: 500; }
+    .top nav a[aria-current="page"] { color: inherit; text-decoration: none; border-bottom: 2px solid var(--accent); }
+    main { padding: 2rem 0 3rem; }
+    h1, h2, h3 { line-height: 1.2; letter-spacing: -0.01em; }
+    h1 { font-size: clamp(2rem, 6vw, 3rem); margin: 0 0 0.5rem; }
+    h2 { font-size: 1.5rem; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1.15rem; margin: 1.5rem 0 0.5rem; }
+    p, li, dd { max-width: 68ch; }
+    .eyebrow { margin: 0 0 0.25rem; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+    .lede { font-size: 1.2rem; color: var(--muted); margin-top: 0; }
+    .muted { color: var(--muted); }
+    .hero { padding-top: 0.5rem; }
+    .hero .icon { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); margin-bottom: 1rem; display: block; }
+    .cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0 0.5rem; }
+    .btn {
+      display: inline-block; padding: 0.7rem 1.2rem; border-radius: 999px; font-weight: 600; text-decoration: none;
+      border: 1.5px solid var(--accent); color: var(--accent); background: transparent;
+    }
+    .btn-primary { background: var(--accent); color: var(--accent-ink); }
+    .btn:hover { text-decoration: underline; }
+    .note { font-size: 0.9rem; color: var(--muted); }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); margin: 1rem 0; padding: 0; list-style: none; }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.2rem; }
+    .card h3 { margin: 0 0 0.35rem; font-size: 1.05rem; }
+    .card p { margin: 0; font-size: 0.97rem; color: var(--muted); }
+    .steps { counter-reset: step; padding: 0; margin: 1rem 0; list-style: none; }
+    .steps li { position: relative; padding-left: 3rem; margin: 0 0 1rem; }
+    .steps li::before {
+      counter-increment: step; content: counter(step);
+      position: absolute; left: 0; top: 0.05rem; width: 2rem; height: 2rem; border-radius: 50%;
+      background: var(--tint); color: var(--accent); font-weight: 700; display: grid; place-items: center;
+    }
+    .shots { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0.25rem 0 0.75rem; margin: 1rem 0; }
+    .shot { flex: 0 0 min(68vw, 15rem); scroll-snap-align: start; margin: 0; }
+    .shot img {
+      display: block; width: 100%; height: auto; aspect-ratio: 1320 / 2868; object-fit: cover;
+      border-radius: 1.5rem; border: 1px solid var(--line); background: var(--tint); color: var(--muted);
+    }
+    .shot figcaption { margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted); text-align: center; }
+    .notice { background: var(--tint); border-radius: var(--radius); padding: 1rem 1.2rem; margin: 1rem 0; }
+    .notice p { margin: 0.25rem 0; }
+    .toc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.2rem; margin: 1rem 0 2rem; }
+    .toc ol { margin: 0.5rem 0 0; padding-left: 1.25rem; columns: 2; column-gap: 2rem; }
+    .toc li { break-inside: avoid; margin: 0.15rem 0; }
+    @media (max-width: 30rem) { .toc ol { columns: 1; } }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.95rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.55rem 0.6rem; border-bottom: 1px solid var(--line); }
+    th { font-weight: 600; }
+    .table-wrap { overflow-x: auto; }
+    dl { margin: 1rem 0; }
+    dt { font-weight: 600; margin-top: 1rem; }
+    dd { margin: 0.25rem 0 0; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.92em; background: var(--tint); padding: 0.1em 0.35em; border-radius: 4px; }
+    footer { border-top: 1px solid var(--line); padding: 1.5rem 0 2.5rem; font-size: 0.9rem; color: var(--muted); }
+    footer nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem; }
+    footer p { margin: 0.25rem 0; }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    @media print { .top nav, .skip, .cta, footer nav { display: none; } a { color: inherit; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="/Stelline/">
+        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="var(--accent)" d="M16 3l3.23 8.55 9.13.43-7.13 5.72 2.41 8.82L16 21.5l-7.64 5.02 2.41-8.82-7.13-5.72 9.13-.43z"/>
+          <path fill="var(--star)" d="M27 1.5l1 2.6 2.8.2-2.15 1.75.7 2.7L27 7.25l-2.35 1.5.7-2.7L23.2 4.3l2.8-.2z"/>
+        </svg>
+        Stelline
+      </a>
+      <nav aria-label="Site">
+        <a href="/Stelline/support/" aria-current="page">Support</a>
+        <a href="/Stelline/privacy/">Privacy</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <p class="eyebrow">Support</p>
+      <h1>Help with Stelline</h1>
+      <p class="lede">Everything the game does, in one page. If your question is not here, <a href="#contact">write to us</a>.</p>
+
+      <nav class="toc" aria-labelledby="toc-h">
+        <strong id="toc-h">On this page</strong>
+        <ol>
+          <li><a href="#rules">The rules</a></li>
+          <li><a href="#modes">Modes and board sizes</a></li>
+          <li><a href="#controls">Controls</a></li>
+          <li><a href="#marks">Dots, X marks, queens and stars</a></li>
+          <li><a href="#assists">Auto-dots and Auto-check</a></li>
+          <li><a href="#hints">Hints and “Show me where”</a></li>
+          <li><a href="#difficulty">What the difficulty means</a></li>
+          <li><a href="#appearance">Colour-blind mode, Classic theme, appearance</a></li>
+          <li><a href="#autosave">Timer, autosave and Continue</a></li>
+          <li><a href="#accessibility">Accessibility</a></li>
+          <li><a href="#requirements">Requirements</a></li>
+          <li><a href="#privacy">Privacy</a></li>
+          <li><a href="#contact">Report a problem</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="rules">The rules</h2>
+      <p>Stelline plays Star Battle-style logic puzzles. The board is a square grid divided into colour regions (or bordered regions in the Classic theme). There are as many regions as rows.</p>
+      <h3>1 queen mode</h3>
+      <ul>
+        <li>Every row holds exactly one queen.</li>
+        <li>Every column holds exactly one queen.</li>
+        <li>Every region holds exactly one queen.</li>
+        <li>Two queens never touch — not side by side, not diagonally.</li>
+      </ul>
+      <h3>2 stars mode</h3>
+      <ul>
+        <li>Every row, every column and every region holds exactly two stars.</li>
+        <li>Two stars never touch, not even diagonally.</li>
+      </ul>
+      <p>Every board has exactly one solution, and the game checks that before it shows you the board. On every tier except Expert in 2 stars mode there is always a next step the hint ladder can name; Expert 2 stars boards are verified unique but may need what-if reasoning the ladder cannot explain (see <a href="#hints">Hints</a>).</p>
+      <p>The in-app tutorial (<em>How to play</em> on the Home screen) walks through the rules on real boards.</p>
+
+      <h2 id="modes">Modes and board sizes</h2>
+      <p>Pick the mode and the size on the Home screen; the choice applies to the next <em>New puzzle</em>.</p>
+      <ul>
+        <li><strong>1 queen:</strong> sizes 6×6 to 11×11. Difficulty Easy, Medium, Hard or Expert.</li>
+        <li><strong>2 stars:</strong> sizes 9×9 to 11×11. Difficulty Medium, Hard, and Expert from 10×10 up.</li>
+      </ul>
+      <p>The game remembers the size and difficulty you last used in each mode. A handful of built-in sample boards is also available from the Home screen.</p>
+
+      <h2 id="controls">Controls</h2>
+      <dl>
+        <dt>Tap a cell</dt>
+        <dd>Cycles it: empty → dot → queen (or star) → empty.</dd>
+        <dt>Drag across cells</dt>
+        <dd>Dots every cell you cross. Start the drag on a dot you placed yourself to erase dots instead. Starting on a queen or star does nothing, so you cannot drag a piece away by accident. One drag is one undo step.</dd>
+        <dt>Undo, Redo, Clear</dt>
+        <dd>Under the board. <em>Clear</em> empties the whole board and can itself be undone. Undo history is saved with the game.</dd>
+        <dt>Hint</dt>
+        <dd>In the toolbar. See <a href="#hints">Hints</a>.</dd>
+        <dt>New puzzle / Next puzzle</dt>
+        <dd>Generates a fresh board of the selected mode, size and difficulty. The board you leave is not kept; only the game you are currently playing is saved.</dd>
+      </dl>
+
+      <h2 id="marks">Dots, X marks, queens and stars</h2>
+      <p>A <strong>dot</strong> means “no queen or star can go here”. It is a note to yourself; the game ignores dots when deciding whether the puzzle is solved, so a stray dot never blocks a win. If you prefer the traditional look, <em>Settings → Mark</em> switches the dot to an <strong>X</strong>. The meaning is the same.</p>
+      <p>The piece you place is drawn as a <strong>crown</strong> on 1 queen boards and a <strong>star</strong> on 2 stars boards. <em>Settings → Piece</em> can force a queen or a star on every board. Again, only the drawing changes.</p>
+
+      <h2 id="assists">Auto-dots and Auto-check</h2>
+      <ul>
+        <li><strong>Auto-dots around a queen or star</strong> (on by default): placing a piece dots its eight neighbours, because nothing can touch it. Removing the piece removes the dots it caused — and only those; dots you placed yourself stay.</li>
+        <li><strong>Auto-dots for completed lines and regions</strong> (off by default): once a row, column or region has all its queens or stars, its remaining cells are dotted.</li>
+        <li><strong>Auto-check</strong> (on by default): pieces that touch, or that exceed what a row, column or region may hold, are striped in red. Turn it off in Settings if you prefer to find conflicts yourself.</li>
+      </ul>
+      <p>To remove an automatic dot, tap the cell twice (the first tap turns it into a queen or star, the second empties it), or use the <em>Clear cell</em> VoiceOver action. Drag-erase only removes dots you placed yourself.</p>
+
+      <h2 id="hints">Hints and “Show me where”</h2>
+      <p>The <em>Hint</em> button works in stages, so you only get as much help as you ask for. Every stage counts as a hint.</p>
+      <ol>
+        <li><strong>Counters.</strong> The first tap shows two numbers: <em>misplaced queens</em> (pieces that are not on a solution cell) and <em>misplaced dots</em> (dots sitting where a queen or star belongs). It never says where. Zero and zero means everything on the board is right so far; anything else means it is time to undo.</li>
+        <li><strong>Show me where.</strong> If something is misplaced, the game highlights the region (or regions) that holds the mistake, then, on the next tap, the exact cells, and finally offers to <em>Clear them</em>. If the board is all correct, it instead highlights the row, column or region behind the next logical step — or the cells themselves when the step spans several units — then shows the cells with a preview of the dots and pieces the step settles, names the technique, and can <em>Do it</em> for you.</li>
+        <li><strong>Reveal.</strong> Only when no logical step is available (which is rare, and only on Expert 2 stars boards) the game offers to place one solution queen or star.</li>
+      </ol>
+      <p>Using a hint means the board will not earn the <em>Flawless</em> badge, which is reserved for solves with no hints and no conflicts.</p>
+
+      <h2 id="difficulty">What the difficulty means</h2>
+      <p>Before a board is offered, a deduction engine solves it with the techniques a person would use, from “dot the neighbours of a piece” to counting arguments across several regions, and grades it from the reasoning it needed. The grade does not depend on the board size.</p>
+      <dl>
+        <dt>Easy</dt>
+        <dd>Simple steps all the way: forced cells, neighbours, lines locked in a region.</dd>
+        <dt>Medium</dt>
+        <dd>A few moments where you must weigh two or three cells against each other, or count queens across regions.</dd>
+        <dt>Hard</dt>
+        <dd>Several counting steps, or, in 2 stars mode, one-level what-if reasoning (“what if a star went here?”, never nested), possibly at more than one point.</dd>
+        <dt>Expert</dt>
+        <dd>In 1 queen mode, the board needs one-level what-if reasoning (“what if a queen went here?”, never nested), possibly at more than one point. In 2 stars mode, the board is verified unique but may need what-if reasoning that goes beyond the engine’s named techniques; it is offered from 10×10 up and marked as such.</dd>
+      </dl>
+
+      <h2 id="appearance">Colour-blind mode, Classic theme, appearance</h2>
+      <ul>
+        <li><strong>Colour-blind mode</strong> (Settings) swaps the pastel palette for high-contrast colours chosen so that every pair of neighbouring regions stays distinct under the common forms of colour vision deficiency, and thickens the region borders.</li>
+        <li><strong>Classic theme</strong> draws the traditional black-and-white Star Battle look: white cells (near-black in dark appearance), a light grid and heavy region borders, with no colours at all.</li>
+        <li><strong>Appearance</strong> follows your iPhone’s light or dark setting, or you can pin one. Dark appearance uses softer region colours.</li>
+        <li>Region borders are always drawn, in every theme, so colour is never the only cue.</li>
+      </ul>
+
+      <h2 id="autosave">Timer, autosave and Continue</h2>
+      <ul>
+        <li>The timer starts when a board appears and pauses whenever the app is not in front. Hide it with <em>Settings → Show timer</em>; it keeps counting quietly.</li>
+        <li>Your game is saved after every move, including the undo and redo history. Quit, switch apps or restart the phone: the Home screen shows <em>Continue</em> with the board size and time so far.</li>
+        <li>Only one game is kept: the one in progress. Starting a new puzzle replaces it.</li>
+        <li>Everything is stored on your iPhone only. See <a href="#privacy">Privacy</a>.</li>
+      </ul>
+
+      <h2 id="accessibility">Accessibility</h2>
+      <ul>
+        <li><strong>VoiceOver:</strong> every cell is announced with its state, region colour name, row and column, and offers the actions <em>Mark dot</em> (or <em>Mark X</em>), <em>Place queen</em> (or <em>Place star</em>) and <em>Clear cell</em>. Hints, banners and the difficulty badge are labelled.</li>
+        <li><strong>Dynamic Type:</strong> all controls scale with your text size; the board never gets clipped, even at the largest accessibility sizes.</li>
+        <li><strong>Reduce Motion:</strong> the generating shimmer, the banner and Solved transitions, the hint-highlight animation and the completion badge bounce are disabled when it is on.</li>
+        <li><strong>Haptics</strong> can be turned off in Settings.</li>
+      </ul>
+
+      <h2 id="requirements">Requirements</h2>
+      <ul>
+        <li>iPhone running <strong>iOS 26 or later</strong>. Earlier versions of iOS cannot install the app.</li>
+        <li>iPhone only, portrait orientation. It is not available for iPad, Mac or Apple Watch.</li>
+        <li>No internet connection is needed, ever. Nothing is downloaded after installation.</li>
+        <li>English only for now.</li>
+      </ul>
+
+      <h2 id="privacy">Privacy</h2>
+      <p>Stelline collects no data at all. It has no network access, no account, no analytics, no ads and no third-party code. Your settings and your saved game stay on your iPhone and are deleted with the app. Full details are in the <a href="/Stelline/privacy/">privacy policy</a>.</p>
+
+      <h2 id="contact">Report a problem</h2>
+      <p>Found a bug, a board that looks wrong, or something the hints explain badly? Use the support forms on GitHub: <a href="https://github.com/ilan-bel/Stelline/issues/new?template=bug_report.yml">report a problem</a>, <a href="https://github.com/ilan-bel/Stelline/issues/new?template=feedback.yml">send feedback</a> or <a href="https://github.com/ilan-bel/Stelline/issues/new?template=feature_request.yml">suggest a feature</a>. Posting needs a free GitHub account; every note is read. Please do not include personal information in a report.</p>
+      <p>Because the app sends nothing to us, we cannot see your game. The following helps us reproduce a problem:</p>
+      <ul>
+        <li>iPhone model and iOS version (Settings → General → About).</li>
+        <li>Stelline version, shown in the app under Settings → About.</li>
+        <li>The mode, board size and difficulty, and what you did just before the problem.</li>
+        <li>A screenshot of the board if you can. If you think a board has more than one solution, a screenshot of the empty board is all we need.</li>
+      </ul>
+      <div class="notice">
+        <p><strong>Lost progress?</strong> Only the game in progress is saved, and deleting the app deletes it. Reinstalling starts fresh. Updating the app keeps your game.</p>
+      </div>
+    </main>
+
+    <footer>
+      <nav aria-label="Footer">
+        <a href="/Stelline/">Home</a>
+        <a href="/Stelline/support/">Support</a>
+        <a href="/Stelline/privacy/">Privacy policy</a>
+      </nav>
+      <p>This site sets no cookies and loads nothing from third parties.</p>
+      <p>Star Battle is a puzzle genre name. Apple, iPhone and App Store are trademarks of Apple Inc. IOS is a trademark or registered trademark of Cisco in the U.S. and other countries and is used under license.</p>
+    </footer>
+  </div>
+</body>
+</html>

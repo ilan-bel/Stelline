@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stelline privacy policy</title>
+  <meta name="description" content="Privacy policy for Stelline, the Star Battle-style logic puzzle game for iPhone. Stelline collects no data: no network access, no accounts, no analytics, no ads, no third-party code.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%233b34a6' d='M16 3l3.23 8.55 9.13.43-7.13 5.72 2.41 8.82L16 21.5l-7.64 5.02 2.41-8.82-7.13-5.72 9.13-.43z'/%3E%3C/svg%3E">
+  <style>
+    /* Stelline site — one shared stylesheet, inlined in every page on purpose (no external requests, works from file://).
+       Keep this block identical in index.html, support.html and privacy.html. */
+    :root {
+      color-scheme: light dark;
+      --bg: #faf9f6;
+      --surface: #ffffff;
+      --text: #1d1c1a;
+      --muted: #5b5853;
+      --line: #e1ded7;
+      --accent: #3b34a6;
+      --accent-ink: #ffffff;
+      --tint: #eeecfb;
+      --star: #d9930f;
+      --radius: 14px;
+      --maxw: 44rem;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121317;
+        --surface: #1b1c22;
+        --text: #ecebe6;
+        --muted: #b3b0a8;
+        --line: #2e3039;
+        --accent: #aaa3ff;
+        --accent-ink: #14122e;
+        --tint: #24233a;
+        --star: #f2b84d;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-padding-top: 1rem; }
+    body {
+      margin: 0;
+      font: 1rem/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-underline-offset: 0.15em; }
+    a:hover { text-decoration-thickness: 2px; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    .skip { position: absolute; left: -999px; top: 0; background: var(--surface); color: var(--text); padding: 0.5rem 1rem; z-index: 10; }
+    .skip:focus { left: 1rem; top: 1rem; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
+    .top {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 0.75rem 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--line);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.15rem; color: inherit; text-decoration: none; }
+    .brand svg { flex: none; }
+    .top nav { display: flex; gap: 1.25rem; font-weight: 500; }
+    .top nav a[aria-current="page"] { color: inherit; text-decoration: none; border-bottom: 2px solid var(--accent); }
+    main { padding: 2rem 0 3rem; }
+    h1, h2, h3 { line-height: 1.2; letter-spacing: -0.01em; }
+    h1 { font-size: clamp(2rem, 6vw, 3rem); margin: 0 0 0.5rem; }
+    h2 { font-size: 1.5rem; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1.15rem; margin: 1.5rem 0 0.5rem; }
+    p, li, dd { max-width: 68ch; }
+    .eyebrow { margin: 0 0 0.25rem; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+    .lede { font-size: 1.2rem; color: var(--muted); margin-top: 0; }
+    .muted { color: var(--muted); }
+    .hero { padding-top: 0.5rem; }
+    .hero .icon { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); margin-bottom: 1rem; display: block; }
+    .cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0 0.5rem; }
+    .btn {
+      display: inline-block; padding: 0.7rem 1.2rem; border-radius: 999px; font-weight: 600; text-decoration: none;
+      border: 1.5px solid var(--accent); color: var(--accent); background: transparent;
+    }
+    .btn-primary { background: var(--accent); color: var(--accent-ink); }
+    .btn:hover { text-decoration: underline; }
+    .note { font-size: 0.9rem; color: var(--muted); }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); margin: 1rem 0; padding: 0; list-style: none; }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.2rem; }
+    .card h3 { margin: 0 0 0.35rem; font-size: 1.05rem; }
+    .card p { margin: 0; font-size: 0.97rem; color: var(--muted); }
+    .steps { counter-reset: step; padding: 0; margin: 1rem 0; list-style: none; }
+    .steps li { position: relative; padding-left: 3rem; margin: 0 0 1rem; }
+    .steps li::before {
+      counter-increment: step; content: counter(step);
+      position: absolute; left: 0; top: 0.05rem; width: 2rem; height: 2rem; border-radius: 50%;
+      background: var(--tint); color: var(--accent); font-weight: 700; display: grid; place-items: center;
+    }
+    .shots { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0.25rem 0 0.75rem; margin: 1rem 0; }
+    .shot { flex: 0 0 min(68vw, 15rem); scroll-snap-align: start; margin: 0; }
+    .shot img {
+      display: block; width: 100%; height: auto; aspect-ratio: 1320 / 2868; object-fit: cover;
+      border-radius: 1.5rem; border: 1px solid var(--line); background: var(--tint); color: var(--muted);
+    }
+    .shot figcaption { margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted); text-align: center; }
+    .notice { background: var(--tint); border-radius: var(--radius); padding: 1rem 1.2rem; margin: 1rem 0; }
+    .notice p { margin: 0.25rem 0; }
+    .toc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.2rem; margin: 1rem 0 2rem; }
+    .toc ol { margin: 0.5rem 0 0; padding-left: 1.25rem; columns: 2; column-gap: 2rem; }
+    .toc li { break-inside: avoid; margin: 0.15rem 0; }
+    @media (max-width: 30rem) { .toc ol { columns: 1; } }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.95rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.55rem 0.6rem; border-bottom: 1px solid var(--line); }
+    th { font-weight: 600; }
+    .table-wrap { overflow-x: auto; }
+    dl { margin: 1rem 0; }
+    dt { font-weight: 600; margin-top: 1rem; }
+    dd { margin: 0.25rem 0 0; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.92em; background: var(--tint); padding: 0.1em 0.35em; border-radius: 4px; }
+    footer { border-top: 1px solid var(--line); padding: 1.5rem 0 2.5rem; font-size: 0.9rem; color: var(--muted); }
+    footer nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem; }
+    footer p { margin: 0.25rem 0; }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    @media print { .top nav, .skip, .cta, footer nav { display: none; } a { color: inherit; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="/Stelline/">
+        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="var(--accent)" d="M16 3l3.23 8.55 9.13.43-7.13 5.72 2.41 8.82L16 21.5l-7.64 5.02 2.41-8.82-7.13-5.72 9.13-.43z"/>
+          <path fill="var(--star)" d="M27 1.5l1 2.6 2.8.2-2.15 1.75.7 2.7L27 7.25l-2.35 1.5.7-2.7L23.2 4.3l2.8-.2z"/>
+        </svg>
+        Stelline
+      </a>
+      <nav aria-label="Site">
+        <a href="/Stelline/support/">Support</a>
+        <a href="/Stelline/privacy/" aria-current="page">Privacy</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <p class="eyebrow">Privacy policy</p>
+      <h1>Stelline collects no data</h1>
+      <p class="lede">Effective date: <time datetime="2026-09-03">3 September 2026</time>. Applies to the Stelline app for iPhone and to this website.</p>
+
+      <div class="notice" role="note">
+        <p><strong>In one paragraph:</strong> Stelline does not collect, store, transmit, sell or share any personal data — or any data at all — about you. The app has no internet access, no account or sign-in, no analytics, no advertising and no third-party software inside it. Your settings and your saved game exist only on your iPhone and are deleted when you delete the app. There is nothing for us to access, correct or erase, because we never receive anything.</p>
+      </div>
+
+      <nav class="toc" aria-labelledby="toc-h">
+        <strong id="toc-h">Contents</strong>
+        <ol>
+          <li><a href="#who">Who this policy covers</a></li>
+          <li><a href="#collected">Data we collect: none</a></li>
+          <li><a href="#network">No network access</a></li>
+          <li><a href="#on-device">What stays on your iPhone</a></li>
+          <li><a href="#third-parties">Third parties: none</a></li>
+          <li><a href="#apple">Apple, the App Store and TestFlight</a></li>
+          <li><a href="#children">Children</a></li>
+          <li><a href="#rights">Your rights under GDPR, CCPA and similar laws</a></li>
+          <li><a href="#website">This website</a></li>
+          <li><a href="#changes">Changes to this policy</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="who">1. Who this policy covers</h2>
+      <p>“Stelline”, “the app”, “we” and “us” refer to the Stelline puzzle game for iPhone and to its independent developer, who publishes it on the App Store. “You” means anyone who installs or uses the app, or visits this website. This policy is written to be jurisdiction-neutral; sections 8 and 9 address the questions that European (GDPR and UK GDPR), Californian (CCPA/CPRA) and similar privacy laws ask.</p>
+
+      <h2 id="collected">2. Data we collect: none</h2>
+      <p>The app does not collect any information from you or about you, and does not send anything off your device. In particular it does <strong>not</strong> collect or process:</p>
+      <ul>
+        <li>your name, email address, phone number or any account details (there is no account);</li>
+        <li>identifiers such as a device ID, advertising identifier or user ID;</li>
+        <li>your location, contacts, photos, calendar, health data or any other data on your iPhone;</li>
+        <li>usage data, gameplay statistics, session recordings or telemetry;</li>
+        <li>crash reports or diagnostics generated by the app itself;</li>
+        <li>purchase or payment information (the app has no in-app purchases);</li>
+        <li>anything typed, tapped or drawn in the app.</li>
+      </ul>
+      <p>The app does not use tracking, fingerprinting, cookies or any similar technology. It never asks for a permission from iOS, because it needs none. Its App Store privacy label is <em>Data Not Collected</em>, and its privacy manifest declares no collected data types, no tracking and no tracking domains.</p>
+
+      <h2 id="network">3. No network access</h2>
+      <p>Stelline contains no networking code. It does not connect to the internet, to our servers (we have none) or to anyone else's, whether Wi-Fi or cellular is available or not. Puzzles are generated and checked entirely on your iPhone. Everything the app does works exactly the same in Airplane Mode.</p>
+
+      <h2 id="on-device">4. What stays on your iPhone</h2>
+      <p>To work as a game, the app keeps a small amount of information locally, inside its own private storage area (the app “sandbox”) on your iPhone. None of it identifies you, and none of it ever leaves the device through the app.</p>
+      <div class="table-wrap">
+        <table>
+          <caption class="muted">Local data kept by the app</caption>
+          <thead>
+            <tr><th scope="col">What</th><th scope="col">Where</th><th scope="col">Why</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Your settings: the mode, board size and difficulty you last chose, Auto-check and auto-dot toggles, timer visibility, piece and mark glyphs, theme, colour-blind mode, appearance and haptics; and a random number used to seed the puzzle generator.</td>
+              <td>The app's user defaults (a standard iOS preferences store private to the app).</td>
+              <td>So the app opens the way you left it.</td>
+            </tr>
+            <tr>
+              <td>The game in progress: the board, your marks, the time elapsed, the hints used and the undo and redo history.</td>
+              <td>A file in the app's private Application Support folder.</td>
+              <td>So <em>Continue</em> can resume your game after the app is closed.</td>
+            </tr>
+            <tr>
+              <td>A small bank of puzzles generated in advance.</td>
+              <td>A file in the same private folder.</td>
+              <td>So <em>New puzzle</em> is instant.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Deleting the app deletes all of it.</strong> iOS removes an app's private storage, including its user defaults and files, when the app is uninstalled. There is no copy anywhere else that we could keep or restore.</p>
+      <p><strong>Device backups.</strong> Like the data of any app, these files may be included in the backups <em>you</em> make of your iPhone (iCloud Backup or a backup to a computer), according to your own iOS settings. Backups are made by Apple's software under your Apple Account and are governed by <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>; the app has no part in them and we cannot access them.</p>
+
+      <h2 id="third-parties">5. Third parties: none</h2>
+      <p>The app contains no third-party software development kits, libraries or services: no analytics, no crash reporting, no advertising, no social features, no cloud sync. It is built only with Apple's system frameworks and our own code. Consequently, no third party receives data from the app, and we do not sell, share, rent or disclose personal information to anyone, because we have none.</p>
+
+      <h2 id="apple">6. Apple, the App Store and TestFlight</h2>
+      <p>You download Stelline from Apple's App Store, or from TestFlight when testing a pre-release version. Apple processes the data involved in downloading, updating and (for TestFlight) testing apps under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>, independently of us.</p>
+      <p>If you have chosen to share analytics with app developers in iOS (<em>Settings → Privacy &amp; Security → Analytics &amp; Improvements → Share With App Developers</em>), Apple may make aggregated, anonymised crash logs and usage statistics for the app available to us through Apple's developer tools. That data is collected by Apple, not by the app, contains no information that identifies you, and stays within Apple's systems; you can turn the sharing off at any time in the same setting. TestFlight testers can likewise choose whether TestFlight shares crash logs and feedback with the developer.</p>
+
+      <h2 id="children">7. Children</h2>
+      <p>Stelline is suitable for all ages and is rated 4+ on the App Store. It collects no personal information from anyone, including children under 13 (or the age of digital consent that applies where you live), and contains no ads, no purchases and no chat. The only web addresses it can open are the pages of this site (support and this policy) and the feedback form linked from Settings, hosted on GitHub, and only when you tap them; they open in your browser, outside the app.</p>
+
+      <h2 id="rights">8. Your rights under GDPR, CCPA and similar laws</h2>
+      <p>Privacy laws such as the EU and UK General Data Protection Regulations, the California Consumer Privacy Act and its equivalents in other places give you rights over personal data an organisation holds about you: to access it, correct it, delete it, receive a copy of it, restrict or object to its use, opt out of its sale or sharing, and not to be discriminated against for exercising those rights.</p>
+      <p>Because Stelline does not process any personal data, <strong>we hold nothing to which these rights could apply</strong>. We are not a controller or processor of your personal data in relation to the app, we have no legal basis to cite because there is no processing, we retain nothing, we transfer nothing across borders, we do not sell or share personal information, and we make no automated decisions about you. The only data that exists is the local game data described in section 4, which is under your sole control: to erase it, delete the app.</p>
+      <p>If you nonetheless believe we hold personal data about you, for example because you emailed us, you can ask us to access, correct or delete it using the contact below, and we will do so. You also have the right to lodge a complaint with your local data protection authority.</p>
+
+      <h2 id="website">9. This website</h2>
+      <p>This website is a set of static pages. It sets no cookies, uses no analytics and loads no fonts, scripts, images or other resources from third parties. It is published through a static hosting provider (currently GitHub Pages, a service of GitHub, Inc.), which, like any web host, may record technical information such as the IP address of visitors in its server logs to deliver the pages and protect its service; that processing is described in <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>. We do not receive those logs.</p>
+      <p>If you email us, we receive what you send (your address and your message) and use it only to reply. We do not add you to any list.</p>
+
+      <h2 id="changes">10. Changes to this policy</h2>
+      <p>If the app ever changes in a way that affects your privacy — for example if a future version added an optional online feature — we would update this policy first, change the effective date at the top, describe the change plainly, and update the app's App Store privacy label to match. The current version of this policy is always the one published at this address.</p>
+
+      <h2 id="contact">11. Contact</h2>
+      <p>Questions about privacy, or about anything else: <a href="https://github.com/ilan-bel/Stelline/issues/new?template=feedback.yml">open a request on GitHub</a>. The <a href="/Stelline/support/">support page</a> has more on how the app works.</p>
+    </main>
+
+    <footer>
+      <nav aria-label="Footer">
+        <a href="/Stelline/">Home</a>
+        <a href="/Stelline/support/">Support</a>
+        <a href="/Stelline/privacy/">Privacy policy</a>
+      </nav>
+      <p>This site sets no cookies and loads nothing from third parties.</p>
+      <p>Star Battle is a puzzle genre name. Apple, iPhone and App Store are trademarks of Apple Inc. IOS is a trademark or registered trademark of Cisco in the U.S. and other countries and is used under license.</p>
+    </footer>
+  </div>
+</body>
+</html>

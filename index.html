@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stelline — Star Battle-style logic puzzles for iPhone</title>
+  <meta name="description" content="Stelline generates unlimited Star Battle-style logic puzzles on your iPhone: one queen or two stars per row, column and region, every board verified to have exactly one solution. No ads, no account, no internet needed.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%233b34a6' d='M16 3l3.23 8.55 9.13.43-7.13 5.72 2.41 8.82L16 21.5l-7.64 5.02 2.41-8.82-7.13-5.72 9.13-.43z'/%3E%3C/svg%3E">
+  <style>
+    /* Stelline site — one shared stylesheet, inlined in every page on purpose (no external requests, works from file://).
+       Keep this block identical in index.html, support.html and privacy.html. */
+    :root {
+      color-scheme: light dark;
+      --bg: #faf9f6;
+      --surface: #ffffff;
+      --text: #1d1c1a;
+      --muted: #5b5853;
+      --line: #e1ded7;
+      --accent: #3b34a6;
+      --accent-ink: #ffffff;
+      --tint: #eeecfb;
+      --star: #d9930f;
+      --radius: 14px;
+      --maxw: 44rem;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121317;
+        --surface: #1b1c22;
+        --text: #ecebe6;
+        --muted: #b3b0a8;
+        --line: #2e3039;
+        --accent: #aaa3ff;
+        --accent-ink: #14122e;
+        --tint: #24233a;
+        --star: #f2b84d;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-padding-top: 1rem; }
+    body {
+      margin: 0;
+      font: 1rem/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-underline-offset: 0.15em; }
+    a:hover { text-decoration-thickness: 2px; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    .skip { position: absolute; left: -999px; top: 0; background: var(--surface); color: var(--text); padding: 0.5rem 1rem; z-index: 10; }
+    .skip:focus { left: 1rem; top: 1rem; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
+    .top {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 0.75rem 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--line);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.15rem; color: inherit; text-decoration: none; }
+    .brand svg { flex: none; }
+    .top nav { display: flex; gap: 1.25rem; font-weight: 500; }
+    .top nav a[aria-current="page"] { color: inherit; text-decoration: none; border-bottom: 2px solid var(--accent); }
+    main { padding: 2rem 0 3rem; }
+    h1, h2, h3 { line-height: 1.2; letter-spacing: -0.01em; }
+    h1 { font-size: clamp(2rem, 6vw, 3rem); margin: 0 0 0.5rem; }
+    h2 { font-size: 1.5rem; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1.15rem; margin: 1.5rem 0 0.5rem; }
+    p, li, dd { max-width: 68ch; }
+    .eyebrow { margin: 0 0 0.25rem; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+    .lede { font-size: 1.2rem; color: var(--muted); margin-top: 0; }
+    .muted { color: var(--muted); }
+    .hero { padding-top: 0.5rem; }
+    .hero .icon { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); margin-bottom: 1rem; display: block; }
+    .cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0 0.5rem; }
+    .btn {
+      display: inline-block; padding: 0.7rem 1.2rem; border-radius: 999px; font-weight: 600; text-decoration: none;
+      border: 1.5px solid var(--accent); color: var(--accent); background: transparent;
+    }
+    .btn-primary { background: var(--accent); color: var(--accent-ink); }
+    .btn:hover { text-decoration: underline; }
+    .note { font-size: 0.9rem; color: var(--muted); }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); margin: 1rem 0; padding: 0; list-style: none; }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.2rem; }
+    .card h3 { margin: 0 0 0.35rem; font-size: 1.05rem; }
+    .card p { margin: 0; font-size: 0.97rem; color: var(--muted); }
+    .steps { counter-reset: step; padding: 0; margin: 1rem 0; list-style: none; }
+    .steps li { position: relative; padding-left: 3rem; margin: 0 0 1rem; }
+    .steps li::before {
+      counter-increment: step; content: counter(step);
+      position: absolute; left: 0; top: 0.05rem; width: 2rem; height: 2rem; border-radius: 50%;
+      background: var(--tint); color: var(--accent); font-weight: 700; display: grid; place-items: center;
+    }
+    .shots { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0.25rem 0 0.75rem; margin: 1rem 0; }
+    .shot { flex: 0 0 min(68vw, 15rem); scroll-snap-align: start; margin: 0; }
+    .shot img {
+      display: block; width: 100%; height: auto; aspect-ratio: 1320 / 2868; object-fit: cover;
+      border-radius: 1.5rem; border: 1px solid var(--line); background: var(--tint); color: var(--muted);
+    }
+    .shot figcaption { margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted); text-align: center; }
+    .notice { background: var(--tint); border-radius: var(--radius); padding: 1rem 1.2rem; margin: 1rem 0; }
+    .notice p { margin: 0.25rem 0; }
+    .toc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.2rem; margin: 1rem 0 2rem; }
+    .toc ol { margin: 0.5rem 0 0; padding-left: 1.25rem; columns: 2; column-gap: 2rem; }
+    .toc li { break-inside: avoid; margin: 0.15rem 0; }
+    @media (max-width: 30rem) { .toc ol { columns: 1; } }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.95rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.55rem 0.6rem; border-bottom: 1px solid var(--line); }
+    th { font-weight: 600; }
+    .table-wrap { overflow-x: auto; }
+    dl { margin: 1rem 0; }
+    dt { font-weight: 600; margin-top: 1rem; }
+    dd { margin: 0.25rem 0 0; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.92em; background: var(--tint); padding: 0.1em 0.35em; border-radius: 4px; }
+    footer { border-top: 1px solid var(--line); padding: 1.5rem 0 2.5rem; font-size: 0.9rem; color: var(--muted); }
+    footer nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem; }
+    footer p { margin: 0.25rem 0; }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    @media print { .top nav, .skip, .cta, footer nav { display: none; } a { color: inherit; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="/Stelline/" aria-current="page">
+        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="var(--accent)" d="M16 3l3.23 8.55 9.13.43-7.13 5.72 2.41 8.82L16 21.5l-7.64 5.02 2.41-8.82-7.13-5.72 9.13-.43z"/>
+          <path fill="var(--star)" d="M27 1.5l1 2.6 2.8.2-2.15 1.75.7 2.7L27 7.25l-2.35 1.5.7-2.7L23.2 4.3l2.8-.2z"/>
+        </svg>
+        Stelline
+      </a>
+      <nav aria-label="Site">
+        <a href="/Stelline/support/">Support</a>
+        <a href="/Stelline/privacy/">Privacy</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="title">
+        <img class="icon" src="/Stelline/assets/icon.png" width="96" height="96" alt="">
+        <p class="eyebrow">For iPhone · iOS 26 or later</p>
+        <h1 id="title">Stelline</h1>
+        <p class="lede">Star Battle-style logic puzzles, generated without end on your iPhone. Place one queen — or two stars — in every row, column and region, and never let two touch.</p>
+        <p>Every board is built on your device and verified to have exactly one solution. Easy to Hard boards are solved by the deduction engine without guessing; Expert is labelled honestly for the boards that need what-if reasoning. Boards are graded by the same engine that powers the hints. No ads, no account, no internet needed, and nothing about you is collected.</p>
+        <div class="cta">
+          <a class="btn" href="/Stelline/support/#rules">How to play</a>
+        </div>
+        <p class="note">Coming to the App Store. English. iPhone only, portrait.</p>
+      </section>
+
+      <section aria-labelledby="shots-h">
+        <h2 id="shots-h">A look at the game</h2>
+        <!-- Screenshots are copied into assets/ by site/sync-assets.sh from ../marketing/screenshots/en-US/*.png (sorted, renamed shot-01.png …),
+             which Scripts/screenshots.sh produces in the order of docs/app-store/LISTING.md §3. One <figure> per file: ./check.sh fails when the
+             counts differ. Adjust the captions and alt text below if the screenshot order changes. -->
+        <div class="shots" role="region" aria-label="Screenshots" tabindex="0">
+          <figure class="shot">
+            <img src="/Stelline/assets/shot-01.png" width="660" height="1434" loading="lazy" alt="An 8 by 8 board in progress under the headline “Every board has exactly one solution”: pastel colour regions, three queens placed, dots on the cells that cannot hold one, the timer and the Hard badge above.">
+            <figcaption>Tap to cycle a cell, drag to dot a whole run.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/Stelline/assets/shot-02.png" width="660" height="1434" loading="lazy" alt="A 9 by 9 board in progress under the headline “One queen per row, column and region”: three queens placed, their rows and columns dotted.">
+            <figcaption>1 queen mode: one queen per row, column and region.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/Stelline/assets/shot-03.png" width="660" height="1434" loading="lazy" alt="A 10 by 10 board in 2-star mode under the headline “Two stars per row, column and region”: six stars placed with their dots.">
+            <figcaption>2-star mode: two stars per row, column and region.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/Stelline/assets/shot-04.png" width="660" height="1434" loading="lazy" alt="The hint ladder at its second step under the headline “Hints that teach the next logical step”: the cells of the deduction highlighted, the technique explained, a Do it button.">
+            <figcaption>Hints count your mistakes first, then walk you to the next step.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/Stelline/assets/shot-05.png" width="660" height="1434" loading="lazy" alt="Three board cards under the headline “Dark, Classic or colour-blind patterns”: the board in dark appearance, in the black-and-white Classic theme, and in colour-blind mode with a distinct pattern per region.">
+            <figcaption>Light or dark, Classic black-and-white, or colour-blind patterns.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/Stelline/assets/shot-06.png" width="660" height="1434" loading="lazy" alt="The Solved sheet under the headline “Flawless: no hints, no conflicts”: the Flawless badge, difficulty, time and hints used.">
+            <figcaption>Solve without hints or conflicts for a Flawless badge.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/Stelline/assets/shot-07.png" width="660" height="1434" loading="lazy" alt="The Home screen under the headline “No ads. No account. Fully offline.”: Continue, the mode, size and difficulty pickers and the New puzzle button.">
+            <figcaption>Pick a mode, a size and a difficulty; nothing leaves your phone.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section aria-labelledby="how-h">
+        <h2 id="how-h">How it plays</h2>
+        <ol class="steps">
+          <li><strong>Pick a mode and a size.</strong> <em>1 queen</em> boards go from 6×6 to 11×11; <em>2 stars</em> boards from 9×9 to 11×11. Choose a difficulty and tap <em>New puzzle</em>.</li>
+          <li><strong>Tap a cell to cycle it</strong> — empty, dot, queen or star. Drag across cells to dot them all; start on one of your dots to erase instead. A placed queen dots its eight neighbours for you.</li>
+          <li><strong>Reason, never guess.</strong> Each row, column and region holds exactly one queen (or two stars), and no two may touch, not even diagonally. Auto-check stripes the ones that do.</li>
+          <li><strong>Stuck?</strong> <em>Hint</em> tells you how many queens and dots are misplaced — never where. <em>Show me where</em> then highlights the row, column or region behind the next logical step, shows the cells, and can apply the step for you.</li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="features-h">
+        <h2 id="features-h">What makes it Stelline</h2>
+        <ul class="grid">
+          <li class="card"><h3>Unlimited boards</h3><p>Every puzzle is generated on your iPhone, usually instantly from a small bank kept ready in the background. There is no pack to buy and no daily limit.</p></li>
+          <li class="card"><h3>Exactly one solution</h3><p>Each board is checked by an exact solver before you see it. You will never be left with a coin flip between two answers.</p></li>
+          <li class="card"><h3>Honest difficulty</h3><p>A deduction engine with 17 human techniques solves every board first and grades it Easy, Medium, Hard or Expert from the reasoning it needed.</p></li>
+          <li class="card"><h3>Hints that teach</h3><p>Counts first, locations only if you ask. The step-by-step ladder names the technique and highlights the unit it works on.</p></li>
+          <li class="card"><h3>Made for thinking</h3><p>Auto-dots around a placed queen, auto-check for touching pieces, undo and redo, a timer you can hide, and autosave with Continue.</p></li>
+          <li class="card"><h3>Your look</h3><p>Queen or star glyphs, dot or X marks, a Classic black-and-white theme, colour-blind mode with distinct region colours, light and dark appearance.</p></li>
+          <li class="card"><h3>Accessible</h3><p>Full VoiceOver labels and actions on every cell, Dynamic Type on all controls, Reduce Motion respected.</p></li>
+          <li class="card"><h3>Private by design</h3><p>No network access, no account, no analytics, no ads, no third-party code. Nothing you do leaves your phone. <a href="/Stelline/privacy/">Read the privacy policy</a>.</p></li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="req-h">
+        <h2 id="req-h">Requirements</h2>
+        <p>Stelline runs on iPhone with iOS 26 or later, in portrait. It is in English. It does not need an internet connection at any point.</p>
+        <p>Questions or problems? See the <a href="/Stelline/support/">support page</a>.</p>
+      </section>
+    </main>
+
+    <footer>
+      <nav aria-label="Footer">
+        <a href="/Stelline/">Home</a>
+        <a href="/Stelline/support/">Support</a>
+        <a href="/Stelline/privacy/">Privacy policy</a>
+      </nav>
+      <p>This site sets no cookies and loads nothing from third parties.</p>
+      <p>Star Battle is a puzzle genre name. Apple, iPhone and App Store are trademarks of Apple Inc. IOS is a trademark or registered trademark of Cisco in the U.S. and other countries and is used under license.</p>
+    </footer>
+  </div>
+</body>
+</html>
