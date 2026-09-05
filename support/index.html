@@ -78,6 +78,7 @@
     .btn-primary { background: var(--accent); color: var(--accent-ink); }
     .btn:hover { text-decoration: underline; }
     .note { font-size: 0.9rem; color: var(--muted); }
+    .form { display: block; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); margin-top: 0.75rem; }
     .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); margin: 1rem 0; padding: 0; list-style: none; }
     .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.2rem; }
     .card h3 { margin: 0 0 0.35rem; font-size: 1.05rem; }
@@ -267,7 +268,7 @@
       <p>Stelline collects no data at all. It has no network access, no account, no analytics, no ads and no third-party code. Your settings and your saved game stay on your iPhone and are deleted with the app. Full details are in the <a href="../privacy/">privacy policy</a>.</p>
 
       <h2 id="contact">Report a problem</h2>
-      <p>Found a bug, a board that looks wrong, or something the hints explain badly? Email <a href="mailto:support@stelline.page">support@stelline.page</a>, or use the support forms on GitHub: <a href="https://github.com/ilan-bel/Stelline/issues/new?template=bug_report.yml">report a problem</a>, <a href="https://github.com/ilan-bel/Stelline/issues/new?template=feedback.yml">send feedback</a> or <a href="https://github.com/ilan-bel/Stelline/issues/new?template=feature_request.yml">suggest a feature</a>. Posting needs a free GitHub account; every note is read. Please do not include personal information in a report.</p>
+      <p>Found a bug, a board that looks wrong, or something the hints explain badly? Use the <a href="#form">contact form</a> below, email <a href="mailto:support@stelline.page">support@stelline.page</a>, or, if you have a GitHub account, the forms on GitHub: <a href="https://github.com/ilan-bel/Stelline/issues/new?template=bug_report.yml">report a problem</a>, <a href="https://github.com/ilan-bel/Stelline/issues/new?template=feedback.yml">send feedback</a> or <a href="https://github.com/ilan-bel/Stelline/issues/new?template=feature_request.yml">suggest a feature</a>. Posting needs a free GitHub account; every note is read. Please do not include personal information in a report.</p>
       <p>Because the app sends nothing to us, we cannot see your game. The following helps us reproduce a problem:</p>
       <ul>
         <li>iPhone model and iOS version (Settings → General → About).</li>
@@ -275,6 +276,10 @@
         <li>The mode, board size and difficulty, and what you did just before the problem.</li>
         <li>A screenshot of the board if you can. If you think a board has more than one solution, a screenshot of the empty board is all we need.</li>
       </ul>
+
+      <h3 id="form">Contact form</h3>
+      <p>The form is hosted by Tally and needs no account. Only what you type is sent. If it does not load here, <a href="https://tally.so/r/Pdx98x">open it in its own tab</a>.</p>
+      <iframe class="form" src="https://tally.so/embed/Pdx98x?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1" loading="lazy" width="100%" height="1000" title="Contact Stelline form"></iframe>
       <div class="notice">
         <p><strong>Lost progress?</strong> Only the game in progress is saved, and deleting the app deletes it. Reinstalling starts fresh. Updating the app keeps your game.</p>
       </div>
