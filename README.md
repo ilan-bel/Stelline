@@ -8,6 +8,6 @@ This repository holds the public side of Stelline:
 - support and feedback, through the issue forms: [report a problem](../../issues/new?template=bug_report.yml), [send feedback](../../issues/new?template=feedback.yml), [suggest a feature](../../issues/new?template=feature_request.yml);
 - App Store collateral: screenshots and previews.
 
-The app itself is closed source. Stelline collects no data of any kind; see the [privacy policy](https://ilan-bel.github.io/Stelline/privacy/).
+The app itself is closed source. Stelline collects no data of any kind; see the [privacy policy](https://stelline.page/privacy/).
 
 © 2026 Ilan Belehssen. Text and images in this repository may not be reused without permission.
