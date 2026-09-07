@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stelline — page not found</title>
+  <meta name="description" content="Stelline board links (stelline.page/b/…) open the board in the app; this page shows the board id, its region map and the code when the app is not installed.">
+  <meta name="robots" content="noindex">
+  <meta name="color-scheme" content="light dark">
+  <!-- Safari's Smart App Banner. On a board link the script below adds app-argument=<link>, so the banner's OPEN button
+       hands the board to the app (a tap on a same-domain link inside Safari would otherwise stay in Safari). -->
+  <meta name="apple-itunes-app" content="app-id=6808032290">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%233b34a6' d='M16 3l3.23 8.55 9.13.43-7.13 5.72 2.41 8.82L16 21.5l-7.64 5.02 2.41-8.82-7.13-5.72 9.13-.43z'/%3E%3C/svg%3E">
+  <style>
+    /* Stelline site — one shared stylesheet, inlined in every page on purpose (no external requests, works from file://).
+       Keep this block identical in index.html, support.html and privacy.html. */
+    :root {
+      color-scheme: light dark;
+      --bg: #faf9f6;
+      --surface: #ffffff;
+      --text: #1d1c1a;
+      --muted: #5b5853;
+      --line: #e1ded7;
+      --accent: #3b34a6;
+      --accent-ink: #ffffff;
+      --tint: #eeecfb;
+      --star: #d9930f;
+      --radius: 14px;
+      --maxw: 44rem;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121317;
+        --surface: #1b1c22;
+        --text: #ecebe6;
+        --muted: #b3b0a8;
+        --line: #2e3039;
+        --accent: #aaa3ff;
+        --accent-ink: #14122e;
+        --tint: #24233a;
+        --star: #f2b84d;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-padding-top: 1rem; }
+    body {
+      margin: 0;
+      font: 1rem/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-underline-offset: 0.15em; }
+    a:hover { text-decoration-thickness: 2px; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    .skip { position: absolute; left: -999px; top: 0; background: var(--surface); color: var(--text); padding: 0.5rem 1rem; z-index: 10; }
+    .skip:focus { left: 1rem; top: 1rem; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
+    .top {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 0.75rem 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--line);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.15rem; color: inherit; text-decoration: none; }
+    .brand svg { flex: none; }
+    .top nav { display: flex; gap: 1.25rem; font-weight: 500; }
+    .top nav a[aria-current="page"] { color: inherit; text-decoration: none; border-bottom: 2px solid var(--accent); }
+    main { padding: 2rem 0 3rem; }
+    h1, h2, h3 { line-height: 1.2; letter-spacing: -0.01em; }
+    h1 { font-size: clamp(2rem, 6vw, 3rem); margin: 0 0 0.5rem; }
+    h2 { font-size: 1.5rem; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1.15rem; margin: 1.5rem 0 0.5rem; }
+    p, li, dd { max-width: 68ch; }
+    .eyebrow { margin: 0 0 0.25rem; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+    .lede { font-size: 1.2rem; color: var(--muted); margin-top: 0; }
+    .muted { color: var(--muted); }
+    .hero { padding-top: 0.5rem; }
+    .hero .icon { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); margin-bottom: 1rem; display: block; }
+    .cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0 0.5rem; }
+    .btn {
+      display: inline-block; padding: 0.7rem 1.2rem; border-radius: 999px; font-weight: 600; text-decoration: none;
+      border: 1.5px solid var(--accent); color: var(--accent); background: transparent;
+    }
+    .btn-primary { background: var(--accent); color: var(--accent-ink); }
+    .btn:hover { text-decoration: underline; }
+    .note { font-size: 0.9rem; color: var(--muted); }
+    .form { display: block; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); margin-top: 0.75rem; }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); margin: 1rem 0; padding: 0; list-style: none; }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.2rem; }
+    .card h3 { margin: 0 0 0.35rem; font-size: 1.05rem; }
+    .card p { margin: 0; font-size: 0.97rem; color: var(--muted); }
+    .steps { counter-reset: step; padding: 0; margin: 1rem 0; list-style: none; }
+    .steps li { position: relative; padding-left: 3rem; margin: 0 0 1rem; }
+    .steps li::before {
+      counter-increment: step; content: counter(step);
+      position: absolute; left: 0; top: 0.05rem; width: 2rem; height: 2rem; border-radius: 50%;
+      background: var(--tint); color: var(--accent); font-weight: 700; display: grid; place-items: center;
+    }
+    .shots { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0.25rem 0 0.75rem; margin: 1rem 0; }
+    .shot { flex: 0 0 min(68vw, 15rem); scroll-snap-align: start; margin: 0; }
+    .shot img {
+      display: block; width: 100%; height: auto; aspect-ratio: 1320 / 2868; object-fit: cover;
+      border-radius: 1.5rem; border: 1px solid var(--line); background: var(--tint); color: var(--muted);
+    }
+    .shot figcaption { margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted); text-align: center; }
+    .notice { background: var(--tint); border-radius: var(--radius); padding: 1rem 1.2rem; margin: 1rem 0; }
+    .notice p { margin: 0.25rem 0; }
+    .toc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.2rem; margin: 1rem 0 2rem; }
+    .toc ol { margin: 0.5rem 0 0; padding-left: 1.25rem; columns: 2; column-gap: 2rem; }
+    .toc li { break-inside: avoid; margin: 0.15rem 0; }
+    @media (max-width: 30rem) { .toc ol { columns: 1; } }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.95rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.55rem 0.6rem; border-bottom: 1px solid var(--line); }
+    th { font-weight: 600; }
+    .table-wrap { overflow-x: auto; }
+    dl { margin: 1rem 0; }
+    dt { font-weight: 600; margin-top: 1rem; }
+    dd { margin: 0.25rem 0 0; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.92em; background: var(--tint); padding: 0.1em 0.35em; border-radius: 4px; }
+    footer { border-top: 1px solid var(--line); padding: 1.5rem 0 2.5rem; font-size: 0.9rem; color: var(--muted); }
+    footer nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem; }
+    footer p { margin: 0.25rem 0; }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    @media print { .top nav, .skip, .cta, footer nav { display: none; } a { color: inherit; } }
+  </style>
+  <style>
+    /* 404.html only. The block above is the shared stylesheet (identical on every page); this one styles the board preview. */
+    .board-card {
+      display: grid; gap: 1.25rem; grid-template-columns: minmax(0, 17rem) 1fr; align-items: start;
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.2rem; margin: 1.25rem 0;
+    }
+    @media (max-width: 36rem) { .board-card { grid-template-columns: 1fr; } }
+    .board-map { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; border-radius: 6px; }
+    .board-card .cta { margin: 0 0 0.75rem; }
+    .board-card .note { margin: 0; }
+    .board-id { font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+    .codebox { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: flex-start; margin: 0.75rem 0 0.25rem; }
+    .codebox pre {
+      flex: 1 1 16rem; margin: 0; padding: 0.8rem 1rem; background: var(--tint); border-radius: var(--radius);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85rem; line-height: 1.5;
+      white-space: pre-wrap; overflow-wrap: anywhere; -webkit-user-select: all; user-select: all;
+    }
+    .codebox code { background: none; padding: 0; font-size: inherit; }
+    button.btn { font: inherit; font-weight: 600; line-height: 1.6; cursor: pointer; }
+  </style>
+  <script>
+    // Board codes on the web. These are the same definitions as in the app, so the id shown here is the id Stelline shows:
+    // a code is "SQ1-<size>-<pieces per line>-<format>-<16 hex>-<size×size region digits, base 36>-<CRC-8, 2 hex>"; its short
+    // id is FNV-1a 64 over the code's UTF-8 bytes, top 40 bits as eight Crockford base-32 digits, a hyphen after the fourth.
+    var Stelline = (function () {
+      "use strict";
+      var ALPHABET = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"; // Crockford base-32: no I, L, O or U
+      var DIGITS = 8;
+      var PALETTE = ["#BAA3E3", "#FFC991", "#96BFFF", "#B3DEA1", "#DEDEDE", "#FF8773",
+        "#EBF28C", "#E6A3C2", "#A3D6DB", "#E3CC9E", "#C7A68C", "#9EB2CC"];
+      var SHAPE = /^SQ1-(0|[1-9][0-9]*)-(0|[1-9][0-9]*)-(0|[1-9][0-9]*)-([0-9a-f]{16})-([0-9a-z]+)-([0-9a-f]{2})$/;
+      var MAX_SIZE = 16;
+
+      function utf8(text) { return new TextEncoder().encode(text); }
+
+      // FNV-1a, 64-bit: offset basis 0xcbf29ce484222325, prime 0x100000001b3.
+      function fnv1a64(text) {
+        var bytes = utf8(text), hash = 0xcbf29ce484222325n, prime = 0x100000001b3n, mask = 0xffffffffffffffffn;
+        for (var i = 0; i < bytes.length; i++) {
+          hash ^= BigInt(bytes[i]);
+          hash = (hash * prime) & mask;
+        }
+        return hash;
+      }
+
+      // "7F3K-2QX9": the top 40 bits of the hash, five at a time.
+      function shortID(code) {
+        var hash = fnv1a64(code), id = "";
+        for (var position = 0; position < DIGITS; position++) {
+          if (position === DIGITS / 2) { id += "-"; }
+          var shift = BigInt(64 - 5 * (position + 1));
+          id += ALPHABET[Number((hash >> shift) & 0x1fn)];
+        }
+        return id;
+      }
+
+      // CRC-8 (polynomial 0x07, initial value 0, no reflection, no final xor) over UTF-8 bytes.
+      function crc8(text) {
+        var bytes = utf8(text), crc = 0;
+        for (var i = 0; i < bytes.length; i++) {
+          crc ^= bytes[i];
+          for (var bit = 0; bit < 8; bit++) {
+            crc = (crc & 0x80) ? ((crc << 1) ^ 0x07) & 0xff : (crc << 1) & 0xff;
+          }
+        }
+        return crc;
+      }
+
+      // Region digit: "0"–"9" then "a"–"z".
+      function regionValue(character) {
+        var c = character.charCodeAt(0);
+        return c >= 48 && c <= 57 ? c - 48 : c - 87;
+      }
+
+      // { ok: true, code, size, pieces, regions, id } for a well-formed code whose checksum matches and whose region ids
+      // fit the board, otherwise { ok: false, reason: "shape" | "checksum" | "regions" }. Only the app proves the board.
+      function parseCode(code) {
+        var m = SHAPE.exec(code);
+        if (!m) { return { ok: false, reason: "shape" }; }
+        var size = parseInt(m[1], 10), pieces = parseInt(m[2], 10);
+        if (size < 1 || size > MAX_SIZE || pieces < 1 || m[5].length !== size * size) { return { ok: false, reason: "shape" }; }
+        if (crc8(code.slice(0, -3)) !== parseInt(m[6], 16)) { return { ok: false, reason: "checksum" }; }
+        var regions = [];
+        for (var i = 0; i < m[5].length; i++) {
+          var value = regionValue(m[5].charAt(i));
+          if (value >= size) { return { ok: false, reason: "regions" }; }
+          regions.push(value);
+        }
+        return { ok: true, code: code, size: size, pieces: pieces, regions: regions, id: shortID(code) };
+      }
+
+      // The text after "/b/" in a share link's path, trailing slashes and percent-encoding removed; null when the path
+      // is not a board link at all (nothing after /b/ counts as no link).
+      function codeFromPath(pathname) {
+        if (pathname.slice(0, 3) !== "/b/") { return null; }
+        var rest = pathname.slice(3);
+        try { rest = decodeURIComponent(rest); } catch (error) { return null; }
+        rest = rest.replace(/\/+$/, "");
+        return rest === "" ? null : rest;
+      }
+
+      function modeLabel(pieces) { return pieces === 1 ? "1 queen" : pieces + " stars"; }
+
+      return { ALPHABET: ALPHABET, DIGITS: DIGITS, PALETTE: PALETTE, fnv1a64: fnv1a64, shortID: shortID, crc8: crc8,
+               parseCode: parseCode, codeFromPath: codeFromPath, modeLabel: modeLabel };
+    })();
+  </script>
+  <script>
+    // Smart App Banner: point its OPEN button at the board on board links, drop the banner everywhere else.
+    (function () {
+      var meta = document.querySelector('meta[name="apple-itunes-app"]');
+      if (!meta) { return; }
+      if (Stelline.codeFromPath(location.pathname) !== null) {
+        meta.setAttribute("content", meta.getAttribute("content") + ", app-argument=" + location.href);
+      } else {
+        meta.parentNode.removeChild(meta);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="/">
+        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="var(--accent)" d="M16 3l3.23 8.55 9.13.43-7.13 5.72 2.41 8.82L16 21.5l-7.64 5.02 2.41-8.82-7.13-5.72 9.13-.43z"/>
+          <path fill="var(--star)" d="M27 1.5l1 2.6 2.8.2-2.15 1.75.7 2.7L27 7.25l-2.35 1.5.7-2.7L23.2 4.3l2.8-.2z"/>
+        </svg>
+        Stelline
+      </a>
+      <nav aria-label="Site">
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- Three states, one visible at a time. The script at the end of the page picks one from the address:
+           /b/<code> shows the board, /b/<something else> the damaged-link notice, anything else the plain 404. -->
+      <section id="board" hidden aria-labelledby="board-h">
+        <p class="eyebrow">Shared board</p>
+        <h1 id="board-h">Board <span class="board-id" id="board-id"></span></h1>
+        <p class="lede" id="board-meta"></p>
+        <p>Someone shared a Stelline board with you. A board code always rebuilds the same board, with its single solution, so everyone who opens it plays the very same puzzle and can compare times.</p>
+        <div class="board-card">
+          <svg class="board-map" id="board-map" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Region map of the board"></svg>
+          <div>
+            <div class="cta">
+              <a class="btn btn-primary" id="open-link" href="https://stelline.page/b/">Open in Stelline</a>
+              <a class="btn" href="https://apps.apple.com/app/id6808032290">Get Stelline on the App Store</a>
+            </div>
+            <p class="note">On an iPhone with Stelline installed, the link opens the board in the app. Otherwise install Stelline from the App Store, then open the link again or paste the code below into <em>Enter a code</em> on the Home screen.</p>
+          </div>
+        </div>
+
+        <h2 id="code-h">Board code</h2>
+        <p>The code is the board itself, not a reference to one: the same string on every device, and nothing about you is in it. Copy it and paste it into <em>Enter a code</em> in Stelline.</p>
+        <div class="codebox">
+          <pre><code id="board-code"></code></pre>
+          <button type="button" class="btn" id="copy">Copy</button>
+        </div>
+        <p class="note" id="copy-status" role="status"></p>
+      </section>
+
+      <section id="broken" hidden aria-labelledby="broken-h">
+        <p class="eyebrow">Shared board</p>
+        <h1 id="broken-h">This board link is not complete</h1>
+        <p class="lede">The address looks like a Stelline board link, but the code in it is not a valid board code.</p>
+        <p>It was probably cut short or altered while it was copied. Ask for the link again, or paste the full code into <em>Enter a code</em> on the Home screen of Stelline.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://apps.apple.com/app/id6808032290">Get Stelline on the App Store</a>
+          <a class="btn" href="/">Home</a>
+        </div>
+      </section>
+
+      <section id="notfound" aria-labelledby="notfound-h">
+        <p class="eyebrow">Error 404</p>
+        <h1 id="notfound-h">Page not found</h1>
+        <p class="lede">There is nothing at this address.</p>
+        <p>Try the <a href="/">home page</a>, the <a href="/support/">support page</a> or the <a href="/privacy/">privacy policy</a>.</p>
+      </section>
+    </main>
+
+    <footer>
+      <nav aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy policy</a>
+      </nav>
+      <p>This site sets no cookies and loads nothing from third parties.</p>
+      <p>Star Battle is a puzzle genre name. Apple, iPhone and App Store are trademarks of Apple Inc. IOS is a trademark or registered trademark of Cisco in the U.S. and other countries and is used under license.</p>
+    </footer>
+  </div>
+  <script>
+    (function () {
+      "use strict";
+      var BASE = "https://stelline.page/b/";
+      var SVG = "http://www.w3.org/2000/svg";
+      var INK = "#1d1c1a";
+
+      function byId(id) { return document.getElementById(id); }
+
+      function element(name, attributes) {
+        var node = document.createElementNS(SVG, name);
+        Object.keys(attributes).forEach(function (key) { node.setAttribute(key, attributes[key]); });
+        return node;
+      }
+
+      // The region map: one square per cell in its region's colour, a light grid, heavy lines where the region changes.
+      function drawBoard(svg, board) {
+        var n = board.size, s = 10, pad = 0.6, regions = board.regions;
+        while (svg.firstChild) { svg.removeChild(svg.firstChild); }
+        svg.setAttribute("viewBox", (-pad) + " " + (-pad) + " " + (n * s + 2 * pad) + " " + (n * s + 2 * pad));
+        svg.setAttribute("aria-label", "Region map of a " + n + " by " + n + " board divided into " + n + " colour regions");
+        var cells = element("g", {});
+        for (var r = 0; r < n; r++) {
+          for (var c = 0; c < n; c++) {
+            cells.appendChild(element("rect", {
+              x: c * s, y: r * s, width: s, height: s,
+              fill: Stelline.PALETTE[regions[r * n + c] % Stelline.PALETTE.length]
+            }));
+          }
+        }
+        svg.appendChild(cells);
+        var thin = "", thick = "";
+        for (var i = 1; i < n; i++) {
+          thin += "M" + (i * s) + " 0V" + (n * s) + "M0 " + (i * s) + "H" + (n * s);
+        }
+        for (var row = 0; row < n; row++) {
+          for (var col = 0; col < n; col++) {
+            var here = regions[row * n + col];
+            if (col + 1 < n && regions[row * n + col + 1] !== here) {
+              thick += "M" + ((col + 1) * s) + " " + (row * s) + "v" + s;
+            }
+            if (row + 1 < n && regions[(row + 1) * n + col] !== here) {
+              thick += "M" + (col * s) + " " + ((row + 1) * s) + "h" + s;
+            }
+          }
+        }
+        svg.appendChild(element("path", { d: thin, fill: "none", stroke: INK, "stroke-opacity": "0.22", "stroke-width": "0.35" }));
+        svg.appendChild(element("path", { d: thick, fill: "none", stroke: INK, "stroke-width": "1", "stroke-linecap": "square" }));
+        svg.appendChild(element("rect", { x: 0, y: 0, width: n * s, height: n * s, fill: "none", stroke: INK, "stroke-width": "1.2", rx: "0.8" }));
+      }
+
+      function selectAll(node) {
+        var range = document.createRange();
+        range.selectNodeContents(node);
+        var selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+
+      function wireCopy(code) {
+        var button = byId("copy"), status = byId("copy-status"), timer = null;
+        function say(text, label) {
+          status.textContent = text;
+          button.textContent = label;
+          if (timer) { clearTimeout(timer); }
+          timer = setTimeout(function () { button.textContent = "Copy"; }, 1800);
+        }
+        button.addEventListener("click", function () {
+          var written = navigator.clipboard && navigator.clipboard.writeText
+            ? navigator.clipboard.writeText(code)
+            : Promise.reject(new Error("no clipboard"));
+          written.then(function () {
+            say("Board code copied.", "Copied");
+          }, function () {
+            selectAll(byId("board-code"));
+            say("Copying is not allowed here; the code is selected, copy it by hand.", "Copy");
+          });
+        });
+      }
+
+      var code = Stelline.codeFromPath(location.pathname);
+      if (code === null) { return; } // a plain missing page: the 404 section is already visible
+      byId("notfound").hidden = true;
+      var board = Stelline.parseCode(code);
+      if (!board.ok) {
+        document.title = "Stelline — board link not complete";
+        byId("broken").hidden = false;
+        return;
+      }
+      document.title = "Stelline board " + board.id;
+      byId("board-id").textContent = board.id;
+      byId("board-meta").textContent = board.size + "×" + board.size + " · " + Stelline.modeLabel(board.pieces);
+      byId("open-link").setAttribute("href", BASE + board.code);
+      byId("board-code").textContent = board.code;
+      drawBoard(byId("board-map"), board);
+      wireCopy(board.code);
+      byId("board").hidden = false;
+    })();
+  </script>
+</body>
+</html>

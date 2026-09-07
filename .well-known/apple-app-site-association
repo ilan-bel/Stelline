@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["8X3BLW23Y7.com.ilanbel.starqueen"],
+        "components": [
+          { "/": "/b/*", "comment": "Board links" }
+        ]
+      }
+    ]
+  }
+}
