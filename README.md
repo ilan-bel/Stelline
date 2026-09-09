@@ -2,6 +2,8 @@
 
 Star Battle-style logic puzzles, generated without end on your iPhone. Place one queen, or two stars, in every row, column and region, and never let two touch.
 
+Stelline is [on the App Store](https://apps.apple.com/app/id6808032290) for iPhone (iOS 26 or later).
+
 This repository holds the public side of Stelline:
 
 - the website, served from GitHub Pages: home, support and FAQ, privacy policy;

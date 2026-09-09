@@ -6,6 +6,7 @@
   <title>Stelline — Star Battle-style logic puzzles for iPhone</title>
   <meta name="description" content="Stelline generates unlimited Star Battle-style logic puzzles on your iPhone: one queen or two stars per row, column and region, every board verified to have exactly one solution. No ads, no account, no internet needed.">
   <meta name="color-scheme" content="light dark">
+  <meta name="apple-itunes-app" content="app-id=6808032290">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%233b34a6' d='M16 3l3.23 8.55 9.13.43-7.13 5.72 2.41 8.82L16 21.5l-7.64 5.02 2.41-8.82-7.13-5.72 9.13-.43z'/%3E%3C/svg%3E">
   <style>
     /* Stelline site — one shared stylesheet, inlined in every page on purpose (no external requests, works from file://).
@@ -117,6 +118,12 @@
     @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
     @media print { .top nav, .skip, .cta, footer nav { display: none; } a { color: inherit; } }
   </style>
+  <style>
+    /* index.html only: Apple's App Store badge (official artwork, black on light, white on dark; min. 40 px tall). */
+    .cta { align-items: center; }
+    .store { display: inline-flex; border-radius: 8px; }
+    .store img { display: block; height: 50px; width: auto; }
+  </style>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -143,9 +150,15 @@
         <p class="lede">Star Battle-style logic puzzles, generated without end on your iPhone. Place one queen — or two stars — in every row, column and region, and never let two touch.</p>
         <p>Every board is built on your device and verified to have exactly one solution. Easy to Hard boards are solved by the deduction engine without guessing; Expert is labelled honestly for the boards that need what-if reasoning. Boards are graded by the same engine that powers the hints. No ads, no account, no internet needed, and nothing about you is collected.</p>
         <div class="cta">
+          <a class="store" href="https://apps.apple.com/app/id6808032290">
+            <picture>
+              <source srcset="assets/app-store-badge-dark.svg" media="(prefers-color-scheme: dark)">
+              <img src="assets/app-store-badge.svg" width="150" height="50" alt="Download on the App Store">
+            </picture>
+          </a>
           <a class="btn" href="support/#rules">How to play</a>
         </div>
-        <p class="note">Coming to the App Store. English. iPhone only, portrait.</p>
+        <p class="note">One purchase, no ads, no in-app purchases. English. iPhone only, portrait.</p>
       </section>
 
       <section aria-labelledby="shots-h">
