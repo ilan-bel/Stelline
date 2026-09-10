@@ -7,7 +7,7 @@ Stelline is [on the App Store](https://apps.apple.com/app/id6808032290) for iPho
 This repository holds the public side of Stelline:
 
 - the website, served from GitHub Pages: home, support and FAQ, privacy policy;
-- support and feedback: the [contact form](https://stelline.page/support/#form) (no account needed), support@stelline.page, or the issue forms: [report a problem](../../issues/new?template=bug_report.yml), [send feedback](../../issues/new?template=feedback.yml), [suggest a feature](../../issues/new?template=feature_request.yml);
+- support and feedback: the [contact form](https://stelline.page/support/#form) (no account needed; also at https://tally.so/r/Pdx98x) or support@stelline.page. GitHub issues on this repository are not monitored for support;
 - ideas and roadmap: the public board at [stelline.featurebase.app](https://stelline.featurebase.app/), open to guests;
 - App Store collateral: screenshots and previews.
 
