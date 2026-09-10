@@ -1,5 +1,14 @@
 blank_issues_enabled: false
 contact_links:
+  - name: Report a problem or send feedback
+    url: https://tally.so/r/Pdx98x
+    about: The contact form. No account needed; every note is read.
+  - name: Email support
+    url: https://stelline.page/support/#contact
+    about: support@stelline.page, and what to include in a report.
+  - name: Ideas and roadmap
+    url: https://stelline.featurebase.app/
+    about: Suggest a feature or vote on what others asked for, as a guest.
   - name: Support page and FAQ
     url: https://stelline.page/support/
     about: How to play, hints, difficulty levels, colour-blind mode, autosave.
