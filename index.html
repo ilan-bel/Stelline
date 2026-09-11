@@ -3,11 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stelline — Star Battle-style logic puzzles for iPhone</title>
-  <meta name="description" content="Stelline generates unlimited Star Battle-style logic puzzles on your iPhone: one queen or two stars per row, column and region, every board verified to have exactly one solution. No ads, no account, no internet needed.">
+  <title>Stelline — Star Battle-style puzzle app for iPhone</title>
+  <meta name="description" content="Unlimited Star Battle-style logic puzzles on your iPhone, every board verified to have exactly one solution. No ads, no account, no data collected.">
   <meta name="color-scheme" content="light dark">
   <meta name="apple-itunes-app" content="app-id=6808032290">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%233b34a6' d='M16 3l3.23 8.55 9.13.43-7.13 5.72 2.41 8.82L16 21.5l-7.64 5.02 2.41-8.82-7.13-5.72 9.13-.43z'/%3E%3C/svg%3E">
+  <link rel="canonical" href="https://stelline.page/">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf9f6">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121317">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Stelline">
+  <meta property="og:title" content="Stelline — Star Battle-style puzzle app for iPhone">
+  <meta property="og:description" content="Unlimited Star Battle-style logic puzzles on your iPhone, every board verified to have exactly one solution. No ads, no account, no data collected.">
+  <meta property="og:url" content="https://stelline.page/">
+  <meta property="og:image" content="https://stelline.page/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Stelline app icon next to the words Stelline, Star Battle-style logic puzzles for iPhone, stelline.page.">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Stelline — Star Battle-style puzzle app for iPhone">
+  <meta name="twitter:description" content="Unlimited Star Battle-style logic puzzles on your iPhone, every board verified to have exactly one solution. No ads, no account, no data collected.">
+  <meta name="twitter:image" content="https://stelline.page/assets/og.png">
+  <meta name="twitter:image:alt" content="The Stelline app icon next to the words Stelline, Star Battle-style logic puzzles for iPhone, stelline.page.">
   <style>
     /* Stelline site — one shared stylesheet, inlined in every page on purpose (no external requests, works from file://).
        Keep this block identical in index.html, support.html and privacy.html. */
@@ -124,6 +142,61 @@
     .store { display: inline-flex; border-radius: 8px; }
     .store img { display: block; height: 50px; width: auto; }
   </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Stelline",
+      "alternateName": "Stelline: Star Logic Puzzles",
+      "url": "https://stelline.page/",
+      "image": "https://stelline.page/assets/og.png",
+      "screenshot": [
+        "https://stelline.page/assets/shot-01.png",
+        "https://stelline.page/assets/shot-02.png",
+        "https://stelline.page/assets/shot-03.png",
+        "https://stelline.page/assets/shot-04.png",
+        "https://stelline.page/assets/shot-05.png",
+        "https://stelline.page/assets/shot-06.png",
+        "https://stelline.page/assets/shot-07.png"
+      ],
+      "description": "Stelline is a calm Star Battle-style logic game for people who solve by reasoning, not by trial and error. Every board is generated on your iPhone, verified to have exactly one solution, and graded by the same deduction engine that powers its hints. Place one queen, or two stars, in every row, column and region, and never let two touch. Today's board is the same board for everyone for 24 hours, with optional Game Center leaderboards. No ads, no account, and nothing ever leaves your phone.",
+      "operatingSystem": "iOS 26 or later",
+      "applicationCategory": "GameApplication",
+      "applicationSubCategory": "Puzzle",
+      "inLanguage": "en",
+      "isAccessibleForFree": false,
+      "offers": {
+        "@type": "Offer",
+        "price": "1.99",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://apps.apple.com/app/id6808032290"
+      },
+      "downloadUrl": "https://apps.apple.com/app/id6808032290",
+      "installUrl": "https://apps.apple.com/app/id6808032290",
+      "featureList": [
+        "Unlimited boards generated on the device, each verified to have exactly one solution",
+        "1 queen mode on 6×6 to 11×11 boards, 2 stars mode on 9×9 to 11×11 boards",
+        "Difficulty graded Easy to Expert by a seventeen-technique deduction engine",
+        "Hints that count mistakes first, then walk through the next logical step",
+        "Today's board: the same board for everyone per UTC day, with optional Game Center leaderboards",
+        "Shareable board links",
+        "Colour-blind mode, Classic theme, light and dark appearance",
+        "VoiceOver, Dynamic Type and Reduce Motion support",
+        "No ads, no account, no analytics, no data collected"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Stelline",
+        "url": "https://stelline.page/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Stelline",
+        "url": "https://stelline.page/"
+      }
+    }
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -163,9 +236,6 @@
 
       <section aria-labelledby="shots-h">
         <h2 id="shots-h">A look at the game</h2>
-        <!-- Screenshots are copied into assets/ by site/sync-assets.sh from ../marketing/screenshots/en-US/*.png (sorted, renamed shot-01.png …),
-             which Scripts/screenshots.sh produces in the order of docs/app-store/LISTING.md §3. One <figure> per file: ./check.sh fails when the
-             counts differ. Adjust the captions and alt text below if the screenshot order changes. -->
         <div class="shots" role="region" aria-label="Screenshots" tabindex="0">
           <figure class="shot">
             <img src="assets/shot-01.png" width="660" height="1434" loading="lazy" alt="An 8 by 8 board in progress under the headline “Every board has exactly one solution”: pastel colour regions, three queens placed, dots on the cells that cannot hold one, the timer and the Hard badge above.">
@@ -234,6 +304,7 @@
         <a href="./">Home</a>
         <a href="support/">Support</a>
         <a href="privacy/">Privacy policy</a>
+        <a href="press/">Press kit</a>
       </nav>
       <p>This site sets no cookies and loads nothing from third parties.</p>
       <p>Star Battle is a puzzle genre name. Apple, iPhone and App Store are trademarks of Apple Inc. IOS is a trademark or registered trademark of Cisco in the U.S. and other countries and is used under license.</p>

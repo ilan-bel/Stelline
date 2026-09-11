@@ -1,0 +1,5 @@
+# stelline.page: static pages, nothing to hide. The 404 page (board links under /b/) carries its own noindex.
+User-agent: *
+Allow: /
+
+Sitemap: https://stelline.page/sitemap.xml
