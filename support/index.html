@@ -3,10 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stelline support — how to play, hints, settings and contact</title>
-  <meta name="description" content="Support for Stelline, the Star Battle-style logic puzzle game for iPhone: the rules of both modes, dots and X marks, hints and the Show me where ladder, difficulty tiers, colour-blind mode, autosave, requirements and how to report a problem.">
+  <title>Stelline support — rules, hints, Today's board, contact</title>
+  <meta name="description" content="How to play Stelline, the Star Battle-style puzzle app for iPhone: the rules, hints, difficulty, colour-blind mode, autosave, Today's board and contact.">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%233b34a6' d='M16 3l3.23 8.55 9.13.43-7.13 5.72 2.41 8.82L16 21.5l-7.64 5.02 2.41-8.82-7.13-5.72 9.13-.43z'/%3E%3C/svg%3E">
+  <link rel="canonical" href="https://stelline.page/support/">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf9f6">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121317">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Stelline">
+  <meta property="og:title" content="Stelline support — rules, hints, Today's board, contact">
+  <meta property="og:description" content="How to play Stelline, the Star Battle-style puzzle app for iPhone: the rules, hints, difficulty, colour-blind mode, autosave, Today's board and contact.">
+  <meta property="og:url" content="https://stelline.page/support/">
+  <meta property="og:image" content="https://stelline.page/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Stelline app icon next to the words Stelline, Star Battle-style logic puzzles for iPhone, stelline.page.">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Stelline support — rules, hints, Today's board, contact">
+  <meta name="twitter:description" content="How to play Stelline, the Star Battle-style puzzle app for iPhone: the rules, hints, difficulty, colour-blind mode, autosave, Today's board and contact.">
+  <meta name="twitter:image" content="https://stelline.page/assets/og.png">
+  <meta name="twitter:image:alt" content="The Stelline app icon next to the words Stelline, Star Battle-style logic puzzles for iPhone, stelline.page.">
   <style>
     /* Stelline site — one shared stylesheet, inlined in every page on purpose (no external requests, works from file://).
        Keep this block identical in index.html, support.html and privacy.html. */
@@ -117,6 +135,125 @@
     @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
     @media print { .top nav, .skip, .cta, footer nav { display: none; } a { color: inherit; } }
   </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "url": "https://stelline.page/support/",
+      "name": "Stelline support and FAQ",
+      "inLanguage": "en",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I play?",
+          "url": "https://stelline.page/support/#rules",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Stelline plays Star Battle-style logic puzzles on a square grid divided into as many regions as rows. In 1 queen mode every row, every column and every region holds exactly one queen, and two queens never touch, not even diagonally. In 2 stars mode every row, column and region holds exactly two stars, which again never touch. Every board has exactly one solution, and the game checks that before showing it to you. The in-app How to play tutorial walks through the rules on real boards."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which modes and board sizes are there?",
+          "url": "https://stelline.page/support/#modes",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You pick the mode and the size on the Home screen; the choice applies to the next New puzzle. 1 queen boards run from 6×6 to 11×11 with the difficulties Easy, Medium, Hard and Expert. 2 stars boards run from 9×9 to 11×11 with Medium, Hard and, from 10×10 up, Expert. The game remembers the size and difficulty you last used in each mode, and a handful of built-in sample boards is available from Home."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do dots, X marks, queens and stars mean?",
+          "url": "https://stelline.page/support/#marks",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A dot means no queen or star can go in that cell. It is a note to yourself: the game ignores dots when deciding whether the puzzle is solved, so a stray dot never blocks a win. If you prefer the traditional look, Settings lets you draw the mark as an X; the meaning is the same. The piece you place is drawn as a crown on 1 queen boards and a star on 2 stars boards, and Settings can force a queen or a star on every board. Again, only the drawing changes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do hints and “Show me where” work?",
+          "url": "https://stelline.page/support/#hints",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Hint button works in stages, so you get only as much help as you ask for. The first tap shows two counters: misplaced queens or stars and misplaced dots, without saying where they are; zero and zero means everything on the board is right so far. Show me where then highlights the region holding a mistake, then the exact cells, and offers to clear them. When the board is all correct it instead highlights the row, column or region behind the next logical step, shows the cells with a preview, names the technique and can apply the step with Do it. Only on Expert 2 stars boards, when no logical step is available, does the game offer to reveal one solution piece. Any hint means the board will not earn the Flawless badge, which is reserved for solves with no hints and no conflicts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do the difficulty levels mean?",
+          "url": "https://stelline.page/support/#difficulty",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Before a board is offered, a deduction engine solves it with the techniques a person would use and grades it from the reasoning it needed; the grade does not depend on the board size. Easy boards need simple steps only: forced cells, neighbours, lines locked in a region. Medium adds a few moments of weighing two or three cells against each other or counting queens across regions. Hard needs several counting steps or, in 2 stars mode, one-level what-if reasoning. Expert in 1 queen mode needs one-level what-if reasoning, never nested, possibly at more than one point; Expert in 2 stars mode is verified unique but may need reasoning beyond the engine's named techniques, and is marked as such."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a colour-blind mode or a Classic theme?",
+          "url": "https://stelline.page/support/#appearance",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Colour-blind mode in Settings swaps the pastel palette for high-contrast colours chosen so that every pair of neighbouring regions stays distinct under the common forms of colour vision deficiency, and thickens the region borders. The Classic theme draws the traditional black-and-white look with a light grid and heavy region borders and no colours at all. Appearance follows your iPhone's light or dark setting or can be pinned, and region borders are always drawn in every theme, so colour is never the only cue."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my game saved when I leave the app?",
+          "url": "https://stelline.page/support/#autosave",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Your game is saved after every move, including the undo and redo history. Quit, switch apps or restart the phone: the Home screen shows Continue with the board size and the time so far. The timer starts when a board appears, pauses whenever the app is not in front, and can be hidden in Settings. One ordinary game is kept, the one in progress, and starting a new puzzle replaces it; Today's boards are kept separately, one per mode per day. Everything is stored on your iPhone only."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Today's board the same for everyone?",
+          "url": "https://stelline.page/support/#daily",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Today's board is the same board for every player for 24 hours: a 9×9 board in 1 queen mode and a 10×10 board in 2 stars mode, both generated on your iPhone from the date, so no connection is needed. The day changes at midnight UTC and the Home card shows the next change in your local time, along with each mode's state: not played, in progress, or solved with your time and whether it was flawless. Leaderboards are optional and run by Apple's Game Center; they stay off until you turn Game Center on in Settings. When on, the app posts your time on Today's board to the day's leaderboard for that mode. Each mode has four leaderboards, one per assist level (no assists, Auto-check only, Auto-dots only, or both), so your time is compared only with players who used the same assists as you at some point on that board; turning assists off in Settings before you play moves you to a harder tier. Times with hints are kept on your iPhone but not posted. Lower is better, the leaderboards reset daily, and other players see your Game Center nickname and avatar. Times are measured on your device with no server of ours, so treat the leaderboard as a friendly comparison. Turning Game Center off stops the sign-in and the posting; boards, marks and times stay on your iPhone either way."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Stelline work with VoiceOver and Dynamic Type?",
+          "url": "https://stelline.page/support/#accessibility",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. With VoiceOver every cell is announced with its state, region colour name, row and column, and offers the actions Mark dot (or Mark X), Place queen (or Place star) and Clear cell; hints, banners and the difficulty badge are labelled. All controls scale with Dynamic Type and the board is never clipped, even at the largest accessibility sizes. When Reduce Motion is on, the generating shimmer, the banner and Solved transitions, the hint highlight animation and the badge bounce are disabled. Haptics can be turned off in Settings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which iPhones and iOS versions run Stelline?",
+          "url": "https://stelline.page/support/#requirements",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An iPhone running iOS 26 or later; earlier versions of iOS cannot install the app. Stelline is iPhone only, in portrait orientation, and is not available for iPad, Mac or Apple Watch. No internet connection is ever needed and nothing is downloaded after installation. The app is in English only for now."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does Stelline collect?",
+          "url": "https://stelline.page/support/#privacy",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Stelline collects no data at all: it has no network access, no account, no analytics, no ads and no third-party code. The one optional exception is Apple's Game Center for the daily leaderboards, which is off by default. Your settings and your saved game stay on your iPhone and are deleted with the app. The full details are in the privacy policy at stelline.page/privacy/."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I report a problem?",
+          "url": "https://stelline.page/support/#contact",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the contact form on the support page or email support@stelline.page. For ideas and feature requests the public ideas board at stelline.featurebase.app is the best place, because other players can vote on them. Because the app sends nothing to us, we cannot see your game, so include your iPhone model and iOS version, the Stelline version shown under Settings, the mode, board size and difficulty, what you did just before the problem, and a screenshot of the board if you can. If you think a board has more than one solution, a screenshot of the empty board is all we need."
+          }
+        }
+      ]
+    }
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -143,33 +280,35 @@
       <nav class="toc" aria-labelledby="toc-h">
         <strong id="toc-h">On this page</strong>
         <ol>
-          <li><a href="#rules">The rules</a></li>
-          <li><a href="#modes">Modes and board sizes</a></li>
-          <li><a href="#controls">Controls</a></li>
-          <li><a href="#marks">Dots, X marks, queens and stars</a></li>
-          <li><a href="#assists">Auto-dots and Auto-check</a></li>
-          <li><a href="#hints">Hints and “Show me where”</a></li>
-          <li><a href="#difficulty">What the difficulty means</a></li>
-          <li><a href="#appearance">Colour-blind mode, Classic theme, appearance</a></li>
-          <li><a href="#autosave">Timer, autosave and Continue</a></li>
-          <li><a href="#accessibility">Accessibility</a></li>
-          <li><a href="#requirements">Requirements</a></li>
-          <li><a href="#privacy">Privacy</a></li>
-          <li><a href="#contact">Report a problem</a></li>
-          <li><a href="#ideas">Ideas and roadmap</a></li>
+          <li><a href="#rules">How do I play?</a></li>
+          <li><a href="#modes">Which modes and board sizes are there?</a></li>
+          <li><a href="#controls">How do the controls work?</a></li>
+          <li><a href="#marks">What do dots, X marks, queens and stars mean?</a></li>
+          <li><a href="#assists">What do Auto-dots and Auto-check do?</a></li>
+          <li><a href="#hints">How do hints and “Show me where” work?</a></li>
+          <li><a href="#difficulty">What do the difficulty levels mean?</a></li>
+          <li><a href="#appearance">Is there a colour-blind mode or a Classic theme?</a></li>
+          <li><a href="#autosave">Is my game saved when I leave the app?</a></li>
+          <li><a href="#daily">Is Today's board the same for everyone?</a></li>
+          <li><a href="#accessibility">Does Stelline work with VoiceOver and Dynamic Type?</a></li>
+          <li><a href="#requirements">Which iPhones and iOS versions run Stelline?</a></li>
+          <li><a href="#privacy">What does Stelline collect?</a></li>
+          <li><a href="#contact">How do I report a problem?</a></li>
+          <li><a href="#ideas">Where can I suggest a feature or see the roadmap?</a></li>
         </ol>
       </nav>
 
-      <h2 id="rules">The rules</h2>
+      <h2 id="rules">How do I play?</h2>
+      <p>Place one queen (or, in 2 stars mode, two stars) in every row, every column and every colour region, and never let two pieces touch, not even diagonally. Every board has exactly one solution, checked before it is shown to you.</p>
       <p>Stelline plays Star Battle-style logic puzzles. The board is a square grid divided into colour regions (or bordered regions in the Classic theme). There are as many regions as rows.</p>
-      <h3>1 queen mode</h3>
+      <h3>What are the rules in 1 queen mode?</h3>
       <ul>
         <li>Every row holds exactly one queen.</li>
         <li>Every column holds exactly one queen.</li>
         <li>Every region holds exactly one queen.</li>
         <li>Two queens never touch — not side by side, not diagonally.</li>
       </ul>
-      <h3>2 stars mode</h3>
+      <h3>What are the rules in 2 stars mode?</h3>
       <ul>
         <li>Every row, every column and every region holds exactly two stars.</li>
         <li>Two stars never touch, not even diagonally.</li>
@@ -177,15 +316,16 @@
       <p>Every board has exactly one solution, and the game checks that before it shows you the board. On every tier except Expert in 2 stars mode there is always a next step the hint ladder can name; Expert 2 stars boards are verified unique but may need what-if reasoning the ladder cannot explain (see <a href="#hints">Hints</a>).</p>
       <p>The in-app tutorial (<em>How to play</em> on the Home screen) walks through the rules on real boards.</p>
 
-      <h2 id="modes">Modes and board sizes</h2>
-      <p>Pick the mode and the size on the Home screen; the choice applies to the next <em>New puzzle</em>.</p>
+      <h2 id="modes">Which modes and board sizes are there?</h2>
+      <p>Two modes: <strong>1 queen</strong> on boards from 6×6 to 11×11, and <strong>2 stars</strong> on boards from 9×9 to 11×11, each graded Easy to Expert where the tier is offered. Pick the mode and the size on the Home screen; the choice applies to the next <em>New puzzle</em>.</p>
       <ul>
         <li><strong>1 queen:</strong> sizes 6×6 to 11×11. Difficulty Easy, Medium, Hard or Expert.</li>
         <li><strong>2 stars:</strong> sizes 9×9 to 11×11. Difficulty Medium, Hard, and Expert from 10×10 up.</li>
       </ul>
       <p>The game remembers the size and difficulty you last used in each mode. A handful of built-in sample boards is also available from the Home screen.</p>
 
-      <h2 id="controls">Controls</h2>
+      <h2 id="controls">How do the controls work?</h2>
+      <p>Tap a cell to cycle it through empty, dot and queen (or star); drag across cells to dot a whole run. Undo, Redo, Clear and New puzzle sit under the board, and Hint in the toolbar.</p>
       <dl>
         <dt>Tap a cell</dt>
         <dd>Cycles it: empty → dot → queen (or star) → empty.</dd>
@@ -199,11 +339,13 @@
         <dd>Generates a fresh board of the selected mode, size and difficulty. The board you leave is not kept; only the game you are currently playing is saved.</dd>
       </dl>
 
-      <h2 id="marks">Dots, X marks, queens and stars</h2>
+      <h2 id="marks">What do dots, X marks, queens and stars mean?</h2>
+      <p>A dot (or an X, if you prefer) marks a cell where no piece can go; a queen or a star is the piece itself, and which one you see is only a drawing choice. Only the pieces count towards solving the board.</p>
       <p>A <strong>dot</strong> means “no queen or star can go here”. It is a note to yourself; the game ignores dots when deciding whether the puzzle is solved, so a stray dot never blocks a win. If you prefer the traditional look, <em>Settings → Mark</em> switches the dot to an <strong>X</strong>. The meaning is the same.</p>
       <p>The piece you place is drawn as a <strong>crown</strong> on 1 queen boards and a <strong>star</strong> on 2 stars boards. <em>Settings → Piece</em> can force a queen or a star on every board. Again, only the drawing changes.</p>
 
-      <h2 id="assists">Auto-dots and Auto-check</h2>
+      <h2 id="assists">What do Auto-dots and Auto-check do?</h2>
+      <p>Auto-dots place dots for you where nothing can go: around every queen or star you place (on by default) and, if you turn it on, in rows, columns and regions that are already complete. Auto-check stripes in red any pieces that touch or exceed what a row, column or region may hold. All three are optional.</p>
       <ul>
         <li><strong>Auto-dots around a queen or star</strong> (on by default): placing a piece dots its eight neighbours, because nothing can touch it. Removing the piece removes the dots it caused — and only those; dots you placed yourself stay.</li>
         <li><strong>Auto-dots for completed lines and regions</strong> (off by default): once a row, column or region has all its queens or stars, its remaining cells are dotted.</li>
@@ -211,8 +353,8 @@
       </ul>
       <p>To remove an automatic dot, tap the cell twice (the first tap turns it into a queen or star, the second empties it), or use the <em>Clear cell</em> VoiceOver action. Drag-erase only removes dots you placed yourself.</p>
 
-      <h2 id="hints">Hints and “Show me where”</h2>
-      <p>The <em>Hint</em> button works in stages, so you only get as much help as you ask for. Every stage counts as a hint.</p>
+      <h2 id="hints">How do hints and “Show me where” work?</h2>
+      <p>Hints are unlimited and come in stages, so you only get as much help as you ask for: first two counters that say how many queens and dots are misplaced without saying where, then <em>Show me where</em>, which highlights the next logical step (or the mistake) and can apply the fix for you. Every stage counts as a hint.</p>
       <ol>
         <li><strong>Counters.</strong> The first tap shows two numbers: <em>misplaced queens</em> (pieces that are not on a solution cell) and <em>misplaced dots</em> (dots sitting where a queen or star belongs). It never says where. Zero and zero means everything on the board is right so far; anything else means it is time to undo.</li>
         <li><strong>Show me where.</strong> If something is misplaced, the game highlights the region (or regions) that holds the mistake, then, on the next tap, the exact cells, and finally offers to <em>Clear them</em>. If the board is all correct, it instead highlights the row, column or region behind the next logical step — or the cells themselves when the step spans several units — then shows the cells with a preview of the dots and pieces the step settles, names the technique, and can <em>Do it</em> for you.</li>
@@ -220,7 +362,8 @@
       </ol>
       <p>Using a hint means the board will not earn the <em>Flawless</em> badge, which is reserved for solves with no hints and no conflicts.</p>
 
-      <h2 id="difficulty">What the difficulty means</h2>
+      <h2 id="difficulty">What do the difficulty levels mean?</h2>
+      <p>Easy, Medium, Hard and Expert describe the reasoning a board needs, not its size: Easy and Medium boards are solved by direct deductions, Hard adds several counting steps (and, in 2 stars mode, one-level what-if reasoning), and Expert needs what-if reasoning.</p>
       <p>Before a board is offered, a deduction engine solves it with the techniques a person would use, from “dot the neighbours of a piece” to counting arguments across several regions, and grades it from the reasoning it needed. The grade does not depend on the board size.</p>
       <dl>
         <dt>Easy</dt>
@@ -233,7 +376,8 @@
         <dd>In 1 queen mode, the board needs one-level what-if reasoning (“what if a queen went here?”, never nested), possibly at more than one point. In 2 stars mode, the board is verified unique but may need what-if reasoning that goes beyond the engine’s named techniques; it is offered from 10×10 up and marked as such.</dd>
       </dl>
 
-      <h2 id="appearance">Colour-blind mode, Classic theme, appearance</h2>
+      <h2 id="appearance">Is there a colour-blind mode or a Classic theme?</h2>
+      <p>Yes. Settings offers a <strong>Colour-blind mode</strong> with high-contrast colours and thicker borders, a <strong>Classic</strong> black-and-white theme, and a light, dark or system <strong>appearance</strong>. Region borders are drawn in every theme, so colour is never the only cue.</p>
       <ul>
         <li><strong>Colour-blind mode</strong> (Settings) swaps the pastel palette for high-contrast colours chosen so that every pair of neighbouring regions stays distinct under the common forms of colour vision deficiency, and thickens the region borders.</li>
         <li><strong>Classic theme</strong> draws the traditional black-and-white Star Battle look: white cells (near-black in dark appearance), a light grid and heavy region borders, with no colours at all.</li>
@@ -241,15 +385,28 @@
         <li>Region borders are always drawn, in every theme, so colour is never the only cue.</li>
       </ul>
 
-      <h2 id="autosave">Timer, autosave and Continue</h2>
+      <h2 id="autosave">Is my game saved when I leave the app?</h2>
+      <p>Yes. Your game is saved after every move, with its undo history and the time so far, and the Home screen shows <em>Continue</em> when you come back. The timer pauses whenever the app is not in front.</p>
       <ul>
         <li>The timer starts when a board appears and pauses whenever the app is not in front. Hide it with <em>Settings → Show timer</em>; it keeps counting quietly.</li>
         <li>Your game is saved after every move, including the undo and redo history. Quit, switch apps or restart the phone: the Home screen shows <em>Continue</em> with the board size and time so far.</li>
-        <li>Only one game is kept: the one in progress. Starting a new puzzle replaces it.</li>
+        <li>One ordinary game is kept: the one in progress. Starting a new puzzle replaces it. Today's boards are kept separately, one per mode per day, so leaving one for another board and coming back keeps your marks and your time (see below).</li>
         <li>Everything is stored on your iPhone only. See <a href="#privacy">Privacy</a>.</li>
       </ul>
 
-      <h2 id="accessibility">Accessibility</h2>
+      <h2 id="daily">Is Today's board the same for everyone?</h2>
+      <p>Yes. Today's board is the same board for every player for 24 hours, keyed to the UTC date and generated on your iPhone, so no connection is needed. Optional Game Center leaderboards, off by default, let you compare your time on it with other players.</p>
+      <ul>
+        <li><strong>Today's board</strong> is the same board for every player for 24 hours: a 9×9 board in 1 queen mode and a 10×10 board in 2 stars mode, both generated on your iPhone from the date, so no connection is needed. The day changes at midnight UTC; the card on Home shows the next change in your local time.</li>
+        <li>The card shows each mode's state: not played yet, in progress with the time so far, or solved with your time and whether it was flawless. Leaving Today's board for another board does not lose it: come back through the card and your marks, undo history and clock are restored. A day you have played is never regenerated differently, even after an app update.</li>
+        <li><strong>Leaderboards</strong> are optional and run by Apple's Game Center. They are off until you turn on <em>Game Center</em> in Settings or accept the prompt from the trophy button or the Solved screen. When on, the app posts your time on Today's board (and whether the solve was flawless) to the day's leaderboard for that mode; lower is better, and the leaderboards reset daily. Other players see the nickname and avatar of your Game Center profile, as Apple's settings allow. There are no prizes.</li>
+        <li><strong>Assist tiers.</strong> Each mode has four leaderboards, one per assist level: no assists, Auto-check only, Auto-dots only, or both. Your time is compared only with players who used the same assists as you. An assist counts as used once it was on at any moment between your first move on the board and the solve, even if you turned it off later; the card on Home shows the tier your board in progress stands in. The default settings put you in the “both” tier: turn Auto-check and Auto-dots off in Settings before you play to compete in a harder tier. A solve that used a hint is kept on your iPhone with its time but never posted.</li>
+        <li>Times are measured by the app on your device; there is no server and no anti-cheat beyond Apple's. Treat the leaderboard as a friendly comparison, not a competition with stakes.</li>
+        <li>Turn Game Center off any time in Settings: the app stops signing in and posting. Boards, marks and times stay on your iPhone either way. What is sent to Apple, and by whom it is processed, is described in the <a href="../privacy/#game-center">privacy policy</a>.</li>
+      </ul>
+
+      <h2 id="accessibility">Does Stelline work with VoiceOver and Dynamic Type?</h2>
+      <p>Yes. Every cell is a VoiceOver element with actions to mark, place and clear, all controls scale with Dynamic Type, Reduce Motion turns off the animations, and haptics can be switched off.</p>
       <ul>
         <li><strong>VoiceOver:</strong> every cell is announced with its state, region colour name, row and column, and offers the actions <em>Mark dot</em> (or <em>Mark X</em>), <em>Place queen</em> (or <em>Place star</em>) and <em>Clear cell</em>. Hints, banners and the difficulty badge are labelled.</li>
         <li><strong>Dynamic Type:</strong> all controls scale with your text size; the board never gets clipped, even at the largest accessibility sizes.</li>
@@ -257,7 +414,8 @@
         <li><strong>Haptics</strong> can be turned off in Settings.</li>
       </ul>
 
-      <h2 id="requirements">Requirements</h2>
+      <h2 id="requirements">Which iPhones and iOS versions run Stelline?</h2>
+      <p>Any iPhone running iOS 26 or later. Stelline is iPhone only, works entirely offline and is in English.</p>
       <ul>
         <li>iPhone running <strong>iOS 26 or later</strong>. Earlier versions of iOS cannot install the app.</li>
         <li>iPhone only, portrait orientation. It is not available for iPad, Mac or Apple Watch.</li>
@@ -265,11 +423,11 @@
         <li>English only for now.</li>
       </ul>
 
-      <h2 id="privacy">Privacy</h2>
-      <p>Stelline collects no data at all. It has no network access, no account, no analytics, no ads and no third-party code. Your settings and your saved game stay on your iPhone and are deleted with the app. Full details are in the <a href="../privacy/">privacy policy</a>.</p>
+      <h2 id="privacy">What does Stelline collect?</h2>
+      <p>Nothing. Stelline has no network access, no account, no analytics, no ads and no third-party code; its App Store privacy label reads “Data Not Collected”. The one optional exception is Apple's Game Center for the daily leaderboards, off by default and described above. Your settings and your saved game stay on your iPhone and are deleted with the app. Full details are in the <a href="../privacy/">privacy policy</a>.</p>
 
-      <h2 id="contact">Report a problem</h2>
-      <p>Found a bug, a board that looks wrong, or something the hints explain badly? Use the <a href="#form">contact form</a> below, or email <a href="mailto:support@stelline.page">support@stelline.page</a>. For ideas and feature requests, the <a href="https://stelline.featurebase.app/">ideas board</a> is the best place: others can vote on them.</p>
+      <h2 id="contact">How do I report a problem?</h2>
+      <p>Use the <a href="#form">contact form</a> below or email <a href="mailto:support@stelline.page">support@stelline.page</a>, whether it is a bug, a board that looks wrong or something the hints explain badly. For ideas and feature requests, the <a href="https://stelline.featurebase.app/">ideas board</a> is the best place: others can vote on them.</p>
       <p>Because the app sends nothing to us, we cannot see your game. The following helps us reproduce a problem:</p>
       <ul>
         <li>iPhone model and iOS version (Settings → General → About).</li>
@@ -282,8 +440,8 @@
       <p>The form is hosted by Tally and needs no account. Only what you type is sent. If it does not load here, <a href="https://tally.so/r/Pdx98x">open it in its own tab</a>.</p>
       <iframe class="form" src="https://tally.so/embed/Pdx98x?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1" loading="lazy" width="100%" height="1000" title="Contact Stelline form"></iframe>
 
-      <h2 id="ideas">Ideas and roadmap</h2>
-      <p>Wondering what is coming next, or have a feature in mind? The public board at <a href="https://stelline.featurebase.app/">stelline.featurebase.app</a> lists what is planned and what other players asked for. You can vote and post there as a guest, no account needed. Ideas sent through the contact form end up on the same board.</p>
+      <h2 id="ideas">Where can I suggest a feature or see the roadmap?</h2>
+      <p>On the public ideas board at <a href="https://stelline.featurebase.app/">stelline.featurebase.app</a>, which lists what is planned and what other players asked for. You can vote and post there as a guest, no account needed. Ideas sent through the contact form end up on the same board.</p>
       <div class="notice">
         <p><strong>Lost progress?</strong> Only the game in progress is saved, and deleting the app deletes it. Reinstalling starts fresh. Updating the app keeps your game.</p>
       </div>
@@ -294,6 +452,7 @@
         <a href="../">Home</a>
         <a href="../support/">Support</a>
         <a href="../privacy/">Privacy policy</a>
+        <a href="../press/">Press kit</a>
       </nav>
       <p>This site sets no cookies and loads nothing from third parties.</p>
       <p>Star Battle is a puzzle genre name. Apple, iPhone and App Store are trademarks of Apple Inc. IOS is a trademark or registered trademark of Cisco in the U.S. and other countries and is used under license.</p>

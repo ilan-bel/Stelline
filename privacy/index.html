@@ -3,10 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stelline privacy policy</title>
-  <meta name="description" content="Privacy policy for Stelline, the Star Battle-style logic puzzle game for iPhone. Stelline collects no data: no network access, no accounts, no analytics, no ads, no third-party code.">
+  <title>Stelline privacy policy — no data collected</title>
+  <meta name="description" content="Privacy policy for Stelline, the Star Battle-style puzzle app for iPhone: no data collected, no account, no analytics, no ads. Game Center is optional.">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%233b34a6' d='M16 3l3.23 8.55 9.13.43-7.13 5.72 2.41 8.82L16 21.5l-7.64 5.02 2.41-8.82-7.13-5.72 9.13-.43z'/%3E%3C/svg%3E">
+  <link rel="canonical" href="https://stelline.page/privacy/">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf9f6">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121317">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Stelline">
+  <meta property="og:title" content="Stelline privacy policy — no data collected">
+  <meta property="og:description" content="Privacy policy for Stelline, the Star Battle-style puzzle app for iPhone: no data collected, no account, no analytics, no ads. Game Center is optional.">
+  <meta property="og:url" content="https://stelline.page/privacy/">
+  <meta property="og:image" content="https://stelline.page/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Stelline app icon next to the words Stelline, Star Battle-style logic puzzles for iPhone, stelline.page.">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Stelline privacy policy — no data collected">
+  <meta name="twitter:description" content="Privacy policy for Stelline, the Star Battle-style puzzle app for iPhone: no data collected, no account, no analytics, no ads. Game Center is optional.">
+  <meta name="twitter:image" content="https://stelline.page/assets/og.png">
+  <meta name="twitter:image:alt" content="The Stelline app icon next to the words Stelline, Star Battle-style logic puzzles for iPhone, stelline.page.">
   <style>
     /* Stelline site — one shared stylesheet, inlined in every page on purpose (no external requests, works from file://).
        Keep this block identical in index.html, support.html and privacy.html. */
@@ -138,7 +156,7 @@
     <main id="main">
       <p class="eyebrow">Privacy policy</p>
       <h1>Stelline collects no data</h1>
-      <p class="lede">Effective date: <time datetime="2026-09-03">3 September 2026</time>. Applies to the Stelline app for iPhone and to this website.</p>
+      <p class="lede">Effective date: <time datetime="2026-09-12">12 September 2026</time>. Applies to the Stelline app for iPhone and to this website.</p>
 
       <div class="notice" role="note">
         <p><strong>In one paragraph:</strong> Stelline does not collect, store, transmit, sell or share any personal data — or any data at all — about you. The app has no internet access, no account or sign-in, no analytics, no advertising and no third-party software inside it. Your settings and your saved game exist only on your iPhone and are deleted when you delete the app. There is nothing for us to access, correct or erase, because we never receive anything.</p>
@@ -177,8 +195,9 @@
       </ul>
       <p>The app does not use tracking, fingerprinting, cookies or any similar technology. It never asks for a permission from iOS, because it needs none. Its App Store privacy label is <em>Data Not Collected</em>, and its privacy manifest declares no collected data types, no tracking and no tracking domains.</p>
 
-      <h2 id="network">3. No network access</h2>
-      <p>Stelline contains no networking code. It does not connect to the internet, to our servers (we have none) or to anyone else's, whether Wi-Fi or cellular is available or not. Puzzles are generated and checked entirely on your iPhone. Everything the app does works exactly the same in Airplane Mode.</p>
+      <h2 id="network">3. No network access, unless you turn on Game Center</h2>
+      <p>Stelline contains no networking code of its own. It does not connect to the internet, to our servers (we have none) or to anyone else's, whether Wi-Fi or cellular is available or not. Puzzles, including Today's board, are generated and checked entirely on your iPhone. Everything the app does works exactly the same in Airplane Mode.</p>
+      <p>The one exception is optional and off by default: if you turn on <em>Game Center</em> in the app's Settings, Apple's Game Center framework signs you in with the Game Center account of your Apple Account and posts your times on Today's board to Apple's leaderboards. That traffic goes to Apple, not to us; section 6 describes it.</p>
 
       <h2 id="on-device">4. What stays on your iPhone</h2>
       <p>To work as a game, the app keeps a small amount of information locally, inside its own private storage area (the app “sandbox”) on your iPhone. None of it identifies you, and none of it ever leaves the device through the app.</p>
@@ -190,7 +209,7 @@
           </thead>
           <tbody>
             <tr>
-              <td>Your settings: the mode, board size and difficulty you last chose, Auto-check and auto-dot toggles, timer visibility, piece and mark glyphs, theme, colour-blind mode, appearance and haptics; and a random number used to seed the puzzle generator.</td>
+              <td>Your settings: the mode, board size and difficulty you last chose, Auto-check and auto-dot toggles, timer visibility, piece and mark glyphs, theme, colour-blind mode, appearance and haptics, whether Game Center is on; a count of your flawless solves and whether the app has already asked you for a rating; and a random number used to seed the puzzle generator.</td>
               <td>The app's user defaults (a standard iOS preferences store private to the app).</td>
               <td>So the app opens the way you left it.</td>
             </tr>
@@ -198,6 +217,11 @@
               <td>The game in progress: the board, your marks, the time elapsed, the hints used and the undo and redo history.</td>
               <td>A file in the app's private Application Support folder.</td>
               <td>So <em>Continue</em> can resume your game after the app is closed.</td>
+            </tr>
+            <tr>
+              <td>Today's boards: for each day and mode you played, the board, your marks while it is in progress, your time, whether the solve was flawless and whether the time has been posted to Game Center.</td>
+              <td>A file in the same private folder.</td>
+              <td>So the card on Home shows where you stand and a day you already played is never regenerated differently.</td>
             </tr>
             <tr>
               <td>A small bank of puzzles generated in advance.</td>
@@ -211,14 +235,17 @@
       <p><strong>Device backups.</strong> Like the data of any app, these files may be included in the backups <em>you</em> make of your iPhone (iCloud Backup or a backup to a computer), according to your own iOS settings. Backups are made by Apple's software under your Apple Account and are governed by <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>; the app has no part in them and we cannot access them.</p>
 
       <h2 id="third-parties">5. Third parties: none</h2>
-      <p>The app contains no third-party software development kits, libraries or services: no analytics, no crash reporting, no advertising, no social features, no cloud sync. It is built only with Apple's system frameworks and our own code. Consequently, no third party receives data from the app, and we do not sell, share, rent or disclose personal information to anyone, because we have none.</p>
+      <p>The app contains no third-party software development kits, libraries or services: no analytics, no crash reporting, no advertising, no cloud sync. It is built only with Apple's system frameworks (including, if you turn it on, Apple's Game Center, described in section 6) and our own code. Consequently, no third party receives data from the app, and we do not sell, share, rent or disclose personal information to anyone, because we have none.</p>
 
-      <h2 id="apple">6. Apple, the App Store and TestFlight</h2>
+      <h2 id="apple">6. Apple: the App Store, TestFlight and Game Center</h2>
       <p>You download Stelline from Apple's App Store, or from TestFlight when testing a pre-release version. Apple processes the data involved in downloading, updating and (for TestFlight) testing apps under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>, independently of us.</p>
       <p>If you have chosen to share analytics with app developers in iOS (<em>Settings → Privacy &amp; Security → Analytics &amp; Improvements → Share With App Developers</em>), Apple may make aggregated, anonymised crash logs and usage statistics for the app available to us through Apple's developer tools. That data is collected by Apple, not by the app, contains no information that identifies you, and stays within Apple's systems; you can turn the sharing off at any time in the same setting. TestFlight testers can likewise choose whether TestFlight shares crash logs and feedback with the developer.</p>
 
+      <h3 id="game-center">Game Center (optional, off by default)</h3>
+      <p>Stelline 1.1 adds <em>Today's board</em>, the same board for everyone for 24 hours, and two Game Center leaderboards for it (one per mode). Nothing about them requires an account or a connection: you can play Today's board offline like any other board. If you turn on <em>Game Center</em> in the app's Settings, or accept the prompt on the Today's board card, Apple's Game Center framework signs you in with your Game Center account and the app sends Apple, for each Today's board you solve, your time to the hundredth of a second, whether the solve was flawless, and the version of the app's puzzle generator. Apple stores these scores, shows your Game Center nickname and avatar next to them on the leaderboard as Apple's rules and your Game Center profile settings allow, and provides the leaderboard screens shown in the app. All of this is processed by Apple under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a> and the Game Center terms; we run no server and receive none of it. Turn Game Center off in Stelline's Settings to stop posting times; the times already posted stay on Apple's leaderboards until they expire (they reset daily). Your Game Center profile, nickname and who can see your activity are managed in iOS <em>Settings → Game Center</em>.</p>
+
       <h2 id="children">7. Children</h2>
-      <p>Stelline is suitable for all ages and is rated 4+ on the App Store. It collects no personal information from anyone, including children under 13 (or the age of digital consent that applies where you live), and contains no ads, no purchases and no chat. The only web addresses it can open are the pages of this site (support and this policy) and the contact form linked from Settings, hosted by Tally, and only when you tap them; they open in your browser, outside the app.</p>
+      <p>Stelline is suitable for all ages and is rated 4+ on the App Store. It collects no personal information from anyone, including children under 13 (or the age of digital consent that applies where you live), and contains no ads, no purchases and no chat. Game Center is optional and off by default; for a child's Apple Account, Apple's Screen Time and Game Center settings decide whether leaderboards are available at all. The only web addresses it can open are the pages of this site (support and this policy) and the contact form linked from Settings, hosted by Tally, and only when you tap them; they open in your browser, outside the app.</p>
 
       <h2 id="rights">8. Your rights under GDPR, CCPA and similar laws</h2>
       <p>Privacy laws such as the EU and UK General Data Protection Regulations, the California Consumer Privacy Act and its equivalents in other places give you rights over personal data an organisation holds about you: to access it, correct it, delete it, receive a copy of it, restrict or object to its use, opt out of its sale or sharing, and not to be discriminated against for exercising those rights.</p>
@@ -244,6 +271,7 @@
         <a href="../">Home</a>
         <a href="../support/">Support</a>
         <a href="../privacy/">Privacy policy</a>
+        <a href="../press/">Press kit</a>
       </nav>
       <p>This site sets no cookies and loads nothing from third parties.</p>
       <p>Star Battle is a puzzle genre name. Apple, iPhone and App Store are trademarks of Apple Inc. IOS is a trademark or registered trademark of Cisco in the U.S. and other countries and is used under license.</p>
