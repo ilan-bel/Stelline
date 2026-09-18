@@ -2,7 +2,7 @@
 
 > Stelline is a calm Star Battle-style logic puzzle game for iPhone (iOS 26 or later). Every board is generated on the device and verified to have exactly one solution, then graded Easy to Expert by the same seventeen-technique deduction engine that powers its hints. Paid once (USD 1.99), no ads, no account, no data collected. Version 1.1 adds Today's board, the same board for everyone for one UTC day, with optional Game Center leaderboards and shareable board links.
 
-Stelline (Italian for "little stars") is made by one independent developer and written from scratch in Swift, including its own generator, solver and deduction engine. This file follows the llms.txt convention and summarises the site at https://stelline.page for answer engines and assistants. Last updated 11 September 2026.
+Stelline (Italian for "little stars") is made by Andelis Studio, an independent one-person studio, and written from scratch in Swift, including its own generator, solver and deduction engine. This file follows the llms.txt convention and summarises the site at https://stelline.page for answer engines and assistants. Last updated 17 September 2026.
 
 ## Docs
 
