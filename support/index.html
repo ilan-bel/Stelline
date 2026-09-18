@@ -158,7 +158,7 @@
           "url": "https://stelline.page/support/#modes",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You pick the mode and the size on the Home screen; the choice applies to the next New puzzle. 1 queen boards run from 6×6 to 11×11 with the difficulties Easy, Medium, Hard and Expert. 2 stars boards run from 9×9 to 11×11 with Medium, Hard and, from 10×10 up, Expert. The game remembers the size and difficulty you last used in each mode."
+            "text": "You pick the mode and the size on the Home screen; the choice applies to the next New puzzle. 1 queen boards run from 6×6 to 11×11 with the difficulties Easy, Medium, Hard and Expert. 2 stars boards run from 9×9 to 11×11 with Medium, Hard and Expert. The game remembers the size and difficulty you last used in each mode."
           }
         },
         {
@@ -185,7 +185,7 @@
           "url": "https://stelline.page/support/#difficulty",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Before a board is offered, a deduction engine solves it with the techniques a person would use and grades it from the reasoning it needed; the grade does not depend on the board size. Easy boards need simple steps only: forced cells, neighbours, lines locked in a region. Medium adds a few moments of weighing two or three cells against each other or counting queens across regions. Hard needs several counting steps or, in 2 stars mode, one-level what-if reasoning. Expert in 1 queen mode needs one-level what-if reasoning, never nested, possibly at more than one point; Expert in 2 stars mode is verified unique but may need reasoning beyond the engine's named techniques, and is marked as such."
+            "text": "Before a board is offered, a deduction engine solves it with the techniques a person would use and grades it from the reasoning it needed; the grade does not depend on the board size. Easy boards need simple steps only: forced cells, neighbours, lines locked in a region. Medium adds a few moments of weighing two or three cells against each other or counting queens across regions. Hard needs several counting steps or the advanced counting techniques, in both modes. Expert needs what-if reasoning: one level, never nested, in 1 queen mode; in 2 stars mode possibly more, and a few boards go beyond what the hints can explain."
           }
         },
         {
@@ -230,7 +230,7 @@
           "url": "https://stelline.page/support/#requirements",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "An iPhone running iOS 26 or later; earlier versions of iOS cannot install the app. Stelline is iPhone only, in portrait orientation, and is not available for iPad, Mac or Apple Watch. No internet connection is ever needed and nothing is downloaded after installation. The app is in English only for now."
+            "text": "An iPhone running iOS 26 or later; earlier versions of iOS cannot install the app. Stelline is iPhone only, in portrait orientation, and is not available for iPad, Mac or Apple Watch. No internet connection is ever needed and nothing is downloaded after installation. The app is in English, French, German, Spanish, Italian, Japanese and Brazilian Portuguese and follows the iPhone's language; this website and support are in English."
           }
         },
         {
@@ -313,14 +313,14 @@
         <li>Every row, every column and every region holds exactly two stars.</li>
         <li>Two stars never touch, not even diagonally.</li>
       </ul>
-      <p>Every board has exactly one solution, and the game checks that before it shows you the board. On every tier except Expert in 2 stars mode there is always a next step the hint ladder can name; Expert 2 stars boards are verified unique but may need what-if reasoning the ladder cannot explain (see <a href="#hints">Hints</a>).</p>
+      <p>Every board has exactly one solution, and the game checks that before it shows you the board. On every tier except Expert in 2 stars mode there is always a next step the hint ladder can name. Most Expert 2 stars boards are explained step by step too; a few need what-if reasoning the ladder cannot explain (see <a href="#hints">Hints</a>).</p>
       <p>The in-app tutorial (<em>How to play</em> on the Home screen) walks through the rules on real boards.</p>
 
       <h2 id="modes">Which modes and board sizes are there?</h2>
       <p>Two modes: <strong>1 queen</strong> on boards from 6×6 to 11×11, and <strong>2 stars</strong> on boards from 9×9 to 11×11, each graded Easy to Expert where the tier is offered. Pick the mode and the size on the Home screen; the choice applies to the next <em>New puzzle</em>.</p>
       <ul>
         <li><strong>1 queen:</strong> sizes 6×6 to 11×11. Difficulty Easy, Medium, Hard or Expert.</li>
-        <li><strong>2 stars:</strong> sizes 9×9 to 11×11. Difficulty Medium, Hard, and Expert from 10×10 up.</li>
+        <li><strong>2 stars:</strong> sizes 9×9 to 11×11. Difficulty Medium, Hard or Expert.</li>
       </ul>
       <p>The game remembers the size and difficulty you last used in each mode.</p>
 
@@ -363,7 +363,7 @@
       <p>Using a hint means the board will not earn the <em>Flawless</em> badge, which is reserved for solves with no hints and no conflicts.</p>
 
       <h2 id="difficulty">What do the difficulty levels mean?</h2>
-      <p>Easy, Medium, Hard and Expert describe the reasoning a board needs, not its size: Easy and Medium boards are solved by direct deductions, Hard adds several counting steps (and, in 2 stars mode, one-level what-if reasoning), and Expert needs what-if reasoning.</p>
+      <p>Easy, Medium, Hard and Expert describe the reasoning a board needs, not its size: Easy and Medium boards are solved by direct deductions, Hard adds several counting steps or the advanced counting techniques, and Expert needs what-if reasoning.</p>
       <p>Before a board is offered, a deduction engine solves it with the techniques a person would use, from “dot the neighbours of a piece” to counting arguments across several regions, and grades it from the reasoning it needed. The grade does not depend on the board size.</p>
       <dl>
         <dt>Easy</dt>
@@ -371,9 +371,9 @@
         <dt>Medium</dt>
         <dd>A few moments where you must weigh two or three cells against each other, or count queens across regions.</dd>
         <dt>Hard</dt>
-        <dd>Several counting steps, or, in 2 stars mode, one-level what-if reasoning (“what if a star went here?”, never nested), possibly at more than one point.</dd>
+        <dd>Several counting steps, or the advanced counting techniques (squeezes, set differences, fish), in both modes. Still pure deduction: no what-if step.</dd>
         <dt>Expert</dt>
-        <dd>In 1 queen mode, the board needs one-level what-if reasoning (“what if a queen went here?”, never nested), possibly at more than one point. In 2 stars mode, the board is verified unique but may need what-if reasoning that goes beyond the engine’s named techniques; it is offered from 10×10 up and marked as such.</dd>
+        <dd>In 1 queen mode, the board needs one-level what-if reasoning (“what if a queen went here?”, never nested), possibly at more than one point. In 2 stars mode, the board needs what-if reasoning (“what if a star went here?”), possibly more than one level; a few boards go beyond what the hints can explain, and the caption under the difficulty picker says so.</dd>
       </dl>
 
       <h2 id="appearance">Is there a colour-blind mode or a Classic theme?</h2>
@@ -415,12 +415,12 @@
       </ul>
 
       <h2 id="requirements">Which iPhones and iOS versions run Stelline?</h2>
-      <p>Any iPhone running iOS 26 or later. Stelline is iPhone only, works entirely offline and is in English.</p>
+      <p>Any iPhone running iOS 26 or later. Stelline is iPhone only, works entirely offline and comes in seven languages.</p>
       <ul>
         <li>iPhone running <strong>iOS 26 or later</strong>. Earlier versions of iOS cannot install the app.</li>
         <li>iPhone only, portrait orientation. It is not available for iPad, Mac or Apple Watch.</li>
         <li>No internet connection is needed, ever. Nothing is downloaded after installation.</li>
-        <li>English only for now.</li>
+        <li>English, French, German, Spanish, Italian, Japanese and Brazilian Portuguese. The app follows the iPhone's language (Settings, Apps, Stelline, Language lets you choose another). This website and support are in English.</li>
       </ul>
 
       <h2 id="privacy">What does Stelline collect?</h2>

@@ -2,7 +2,7 @@
 
 > Stelline is a calm Star Battle-style logic puzzle game for iPhone (iOS 26 or later). Every board is generated on the device and verified to have exactly one solution, then graded Easy to Expert by the same seventeen-technique deduction engine that powers its hints. Paid once (USD 1.99), no ads, no account, no data collected. Version 1.1 adds Today's board, the same board for everyone for one UTC day, with optional Game Center leaderboards and shareable board links.
 
-Stelline (Italian for "little stars") is made by Andelis Studio, an independent one-person studio, and written from scratch in Swift, including its own generator, solver and deduction engine. This file follows the llms.txt convention and summarises the site at https://stelline.page for answer engines and assistants. Last updated 17 September 2026.
+Stelline (Italian for "little stars") is made by Andelis Studio, an independent one-person studio, and written from scratch in Swift, including its own generator, solver and deduction engine. This file follows the llms.txt convention and summarises the site at https://stelline.page for answer engines and assistants. Last updated 18 September 2026.
 
 ## Docs
 
@@ -14,7 +14,7 @@ Stelline (Italian for "little stars") is made by Andelis Studio, an independent 
 ## App
 
 - [Stelline on the App Store](https://apps.apple.com/app/id6808032290): USD 1.99, paid once, no in-app purchases, no subscription.
-- Platform: iPhone only (not iPad, Mac or Apple Watch), iOS 26 or later, portrait orientation, English. Category: Games, Puzzle. Age rating 4+.
+- Platform: iPhone only (not iPad, Mac or Apple Watch), iOS 26 or later, portrait orientation. Languages: English, French, German, Spanish, Italian, Japanese and Brazilian Portuguese (the app follows the device language; the website and support are in English). Category: Games, Puzzle. Age rating 4+.
 - Board links: https://stelline.page/b/<code> opens a shared board in Stelline when the app is installed; otherwise the page shows the board's id, size, mode and region map with a link to the App Store.
 
 ## Contact
@@ -28,7 +28,7 @@ Stelline (Italian for "little stars") is made by Andelis Studio, an independent 
 - Stelline is a Star Battle-style logic puzzle: place queens (or stars) so that every row, every column and every colour region holds exactly the required number, and no two pieces touch, not even diagonally.
 - Two modes: 1 queen (one queen per row, column and region) on 6×6 to 11×11 boards, and 2 stars (two stars per row, column and region) on 9×9 to 11×11 boards. Compete (version 1.2) holds Today's board in both modes, a numbered archive of every past daily board (#1 is 12 September 2026, one number per day in each mode) and Enter a code; on these boards Auto-check, auto-dots and hints are off for everyone, whatever the settings, so every time is made on equal terms. Past boards can be played any day; their times stay on the iPhone and are not posted.
 - Every board has exactly one solution. Boards are generated on the iPhone, so there is no pack to run out of and nothing to download, and an exact solver checks each one before it is shown.
-- Four difficulty tiers, Easy, Medium, Hard and Expert, graded by a deduction engine with seventeen techniques that solves each board the way a person would. The grade does not depend on the board size. Easy, Medium and Hard 1 queen boards and Medium 2 stars boards need direct deductions only; Expert 1 queen boards need one-level what-if reasoning; Expert 2 stars boards (10×10 and up) are verified unique and may need more.
+- Four difficulty tiers, Easy, Medium, Hard and Expert, graded by a deduction engine with seventeen techniques that solves each board the way a person would. The grade does not depend on the board size. Easy, Medium and Hard boards need direct deductions only in both modes (2 stars has no Easy); Expert boards need what-if reasoning, one level in 1 queen mode; a few Expert 2 stars boards need more than the hints can explain.
 - Hints are unlimited, with no cooldown, and work in stages: two counters (misplaced queens, misplaced dots) that never say where; then "Show me where", which highlights the row, column or region behind the next logical step, then the exact cells, names the technique and applies it on request; a mistake on the board is narrowed down to the region, then the cells, and cleared on request. "Reveal" places one solution piece only when no logical step exists. A solve with no hints and no conflicts earns the Flawless badge.
 - Controls: tap a cell to cycle empty, dot, queen or star; drag across cells to dot them (start on a dot to erase). A placed piece dots its eight neighbours automatically; completed rows, columns and regions can dot themselves too. Auto-check stripes pieces that touch or exceed a row, column or region. Undo, redo and clear, with the history saved alongside the game. A timer that can be hidden. No lives, no streaks.
 - The game saves itself after every move; the Home screen shows Continue with the board size and time so far.

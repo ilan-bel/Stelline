@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stelline — page not found</title>
+  <!-- A neutral static title: this file also answers board links (/b/<code>), and link-preview crawlers read the head
+       without running scripts. The script at the end of the page sets the title of each of the three states. -->
+  <title>Stelline</title>
   <meta name="description" content="A Stelline board link opens the board in the app on iPhone. Without the app, this page shows the board id, its region map and the code to type in.">
   <meta name="robots" content="noindex">
   <meta name="color-scheme" content="light dark">
@@ -16,7 +18,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Stelline">
   <meta property="og:title" content="A Stelline board to solve">
-  <meta property="og:description" content="A Star Battle-style logic board shared from Stelline for iPhone. Open it in the app, or get Stelline on the App Store.">
+  <meta property="og:description" content="A Star Battle-style logic board shared from Stelline for iPhone. Open it in the app, or see its region map and board code on this page.">
   <!-- No canonical and no og:url: this page is served at every missing address, board links (/b/<code>) included, and stays noindex. -->
   <meta property="og:image" content="https://stelline.page/assets/og.png">
   <meta property="og:image:width" content="1200">
@@ -25,7 +27,7 @@
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="A Stelline board to solve">
-  <meta name="twitter:description" content="A Star Battle-style logic board shared from Stelline for iPhone. Open it in the app, or get Stelline on the App Store.">
+  <meta name="twitter:description" content="A Star Battle-style logic board shared from Stelline for iPhone. Open it in the app, or see its region map and board code on this page.">
   <meta name="twitter:image" content="https://stelline.page/assets/og.png">
   <meta name="twitter:image:alt" content="The Stelline app icon next to the words Stelline, Star Battle-style logic puzzles for iPhone, stelline.page.">
   <style>
@@ -413,7 +415,10 @@
       }
 
       var code = Stelline.codeFromPath(location.pathname);
-      if (code === null) { return; } // a plain missing page: the 404 section is already visible
+      if (code === null) { // a plain missing page: the 404 section is already visible, only the tab title is missing
+        document.title = "Stelline — page not found";
+        return;
+      }
       byId("notfound").hidden = true;
       var board = Stelline.parseCode(code);
       if (!board.ok) {
